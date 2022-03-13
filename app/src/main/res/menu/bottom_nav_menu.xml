@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navNhaThuoc"
+        android:icon="@drawable/ic_pharmacy"
+        android:title="@string/nha_thuoc" />
+
+    <item
+        android:id="@+id/navThuoc"
+        android:icon="@drawable/ic_medicine"
+        android:title="@string/thuoc" />
+
+    <item
+        android:id="@+id/navHoaDon"
+        android:icon="@drawable/ic_bill"
+        android:title="@string/hoa_don" />
+
+</menu>

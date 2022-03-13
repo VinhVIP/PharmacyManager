@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Quản lý Nhà Thuốc</string>
+    <string name="nha_thuoc">Nhà thuốc</string>
+    <string name="thuoc">Thuốc</string>
+    <string name="hoa_don">Hóa đơn</string>
+    <string name="ct_hoa_don">Chi tiết hóa đơn</string>
+    <string name="lap_hoa_don">Lập hóa đơn</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_bill_detail">BillDetailActivity</string>
+
+</resources>

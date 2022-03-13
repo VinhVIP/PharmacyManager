@@ -1,0 +1,58 @@
+package com.team28.qlnhathuoc.activity;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.team28.qlnhathuoc.R;
+import com.team28.qlnhathuoc.databinding.ActivityBillCreateBinding;
+import com.team28.qlnhathuoc.fragment.BillChooseMedicineFragment;
+import com.team28.qlnhathuoc.fragment.BillPreviewConfirmFragment;
+import com.team28.qlnhathuoc.viewmodel.BillCreateViewModel;
+
+public class BillCreateActivity extends AppCompatActivity {
+
+    private ActivityBillCreateBinding binding;
+
+    private BillCreateViewModel viewModel;
+
+    private FragmentManager fragmentManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityBillCreateBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        viewModel = new ViewModelProvider(this).get(BillCreateViewModel.class);
+
+        fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmentChooseMedicine, BillChooseMedicineFragment.class, null)
+                .setReorderingAllowed(true)
+                .commit();
+
+        if (viewModel.isShowPreviewBill) {
+            clearAllFragmentBackStack();
+            previewBill();
+        }
+    }
+
+    public void previewBill() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmentChooseMedicine, BillPreviewConfirmFragment.class, null)
+                .setReorderingAllowed(true)
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+    private void clearAllFragmentBackStack() {
+        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); ++i) {
+            fragmentManager.popBackStack();
+        }
+    }
+}

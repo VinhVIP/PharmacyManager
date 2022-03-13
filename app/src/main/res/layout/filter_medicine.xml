@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="24dp">
+
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lọc theo:"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/group1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv1"
+        android:paddingStart="16dp">
+
+        <RadioButton
+            android:id="@+id/radioFilterByMoney"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Tiền bán được"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/radioFilterByTotal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Số lượng bán được"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/radioFilterAll"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:checked="true"
+            android:text="Tất cả"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group1"
+        android:layout_marginTop="6dp"
+        android:text="Thời gian:"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/group2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv2"
+        android:paddingStart="16dp">
+
+        <RadioButton
+            android:id="@+id/radioTimeFixed"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Cụ thể"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/radioTimeAll"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:checked="true"
+            android:text="Tất cả"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group2"
+        android:paddingTop="6dp"
+        android:text="Thứ tự:"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Lọc theo:" />
+
+    <RadioGroup
+        android:id="@+id/group3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv3"
+        android:paddingStart="16dp">
+
+        <RadioButton
+            android:id="@+id/radioAsc"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Tăng dần"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/radioDesc"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:checked="true"
+            android:text="Giảm dần"
+            android:textSize="15sp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnConfirmFileter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Lọc" />
+
+</RelativeLayout>
