@@ -47,6 +47,12 @@ public class BillCreateActivity extends AppCompatActivity {
 
     public void previewBill() {
         fragmentManager.beginTransaction()
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                )
                 .replace(R.id.fragmentChooseMedicine, BillPreviewConfirmFragment.class, null)
                 .setReorderingAllowed(true)
                 .addToBackStack(null)

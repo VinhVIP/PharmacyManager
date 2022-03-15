@@ -13,14 +13,11 @@
         android:orientation="horizontal"
         android:paddingVertical="6dp">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageView
             android:id="@+id/btnYearMinus"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_button_plus_minus"
-            android:text="-"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:id="@+id/tvYear"
@@ -32,17 +29,15 @@
             android:textSize="17sp"
             android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageView
             android:id="@+id/btnYearPlus"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_button_plus_minus"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_arrow_next" />
     </LinearLayout>
 
     <com.github.mikephil.charting.charts.BarChart
+        android:layout_marginBottom="8dp"
         android:id="@+id/barChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

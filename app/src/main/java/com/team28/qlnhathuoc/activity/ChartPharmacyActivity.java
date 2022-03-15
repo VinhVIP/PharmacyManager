@@ -143,7 +143,7 @@ public class ChartPharmacyActivity extends AppCompatActivity {
 
             int pharmacyIndex = 0;
             for (NhaThuoc pharmacy : map.keySet()) {
-                labelsPharmacy.add(pharmacy.maNT);
+                labelsPharmacy.add(pharmacy.tenNT);
 
                 List<Float> moneyOfQuarter = map.get(pharmacy);
                 for (int i = 0; i < 4; i++) {

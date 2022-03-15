@@ -47,19 +47,14 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageView
             android:id="@+id/btnMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/bg_button_plus_minus"
-            android:text="-"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:src="@drawable/ic_minus" />
 
         <TextView
             android:id="@+id/tvNumber"
@@ -74,14 +69,11 @@
             android:textSize="17sp"
             android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageView
             android:id="@+id/btnPlus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/bg_button_plus_minus"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:src="@drawable/ic_plus" />
     </LinearLayout>
 
 </LinearLayout>

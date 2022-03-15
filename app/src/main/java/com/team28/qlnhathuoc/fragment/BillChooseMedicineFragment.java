@@ -1,6 +1,8 @@
 package com.team28.qlnhathuoc.fragment;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,9 @@ import com.team28.qlnhathuoc.databinding.FragmentBillChooseMedicineBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Helpers;
 import com.team28.qlnhathuoc.viewmodel.BillCreateViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BillChooseMedicineFragment extends Fragment {
 
@@ -44,6 +49,43 @@ public class BillChooseMedicineFragment extends Fragment {
         setupRecyclerView();
         setupButtonPreviewBill();
 
+        setupFilterMedicine();
+    }
+
+    private void setupFilterMedicine() {
+        binding.edSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String keyword = binding.edSearch.getText().toString().trim();
+                if (keyword.isEmpty()) {
+                    adapter.setAdapter(viewModel.medicinesChoose.getValue());
+                } else {
+                    List<Thuoc> medicines = new ArrayList<>();
+                    for (Thuoc medicine : viewModel.medicinesChoose.getValue()) {
+                        if (medicine.tenThuoc.toLowerCase().contains(keyword.toLowerCase()) ||
+                                medicine.maThuoc.toLowerCase().contains(keyword.toLowerCase())) {
+                            medicines.add(medicine);
+                        }
+                    }
+                    adapter.setAdapter(medicines);
+                }
+            }
+        });
+
+        binding.btnClear.setOnClickListener(v -> {
+            binding.edSearch.setText("");
+            adapter.setAdapter(viewModel.medicinesChoose.getValue());
+        });
     }
 
     private void setupButtonPreviewBill() {

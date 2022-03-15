@@ -57,7 +57,7 @@ public class BillDetailActivity extends AppCompatActivity {
         binding.tvsoHD.setText(billObj.soHD);
         binding.tvTenNT.setText(billObj.pharmacyObj.maNT + " - " + billObj.pharmacyObj.tenNT);
         binding.tvNgayHD.setText(Helpers.getStringDate(billObj.ngayHD));
-        binding.tvTotalMoney.setText(Helpers.formatCurrency(billObj.total));
+        binding.tvTotalMoney.setText(Helpers.formatCurrency(billObj.total) + " đ");
     }
 
     private void setupRecyclerView() {

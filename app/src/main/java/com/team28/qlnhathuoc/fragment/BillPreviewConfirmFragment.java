@@ -57,9 +57,13 @@ public class BillPreviewConfirmFragment extends Fragment {
         binding.recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         binding.btnConfirmBill.setOnClickListener(v -> {
-            viewModel.insertBill();
-            Toast.makeText(getContext(), "Lập hóa đơn thành công", Toast.LENGTH_SHORT).show();
-            getActivity().finish();
+            if (viewModel.getTotalMoney().getValue() == 0f) {
+                Toast.makeText(getContext(), "Vui lòng chọn thuốc muốn mua!", Toast.LENGTH_SHORT).show();
+            } else {
+                viewModel.insertBill();
+                Toast.makeText(getContext(), "Lập hóa đơn thành công", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
+            }
         });
 
         viewModel.getTotalMoney().observe(getActivity(), totalMoney -> {
