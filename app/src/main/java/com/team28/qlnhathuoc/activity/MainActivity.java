@@ -11,6 +11,7 @@ import com.team28.qlnhathuoc.databinding.ActivityMainBinding;
 import com.team28.qlnhathuoc.fragment.BillFragment;
 import com.team28.qlnhathuoc.fragment.MedicineFragment;
 import com.team28.qlnhathuoc.fragment.PharmacyFragment;
+import com.team28.qlnhathuoc.fragment.StatisticFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter.addFragment(new PharmacyFragment());
         pagerAdapter.addFragment(new MedicineFragment());
         pagerAdapter.addFragment(new BillFragment());
+        pagerAdapter.addFragment(new StatisticFragment());
 
         binding.viewPager.setAdapter(pagerAdapter);
         binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    int[] menus = {R.id.navNhaThuoc, R.id.navThuoc, R.id.navHoaDon};
+    int[] menus = {R.id.navNhaThuoc, R.id.navThuoc, R.id.navHoaDon, R.id.navThongKe};
 
     private void setupBottomNav() {
         binding.bottomNav.setOnItemSelectedListener(item -> {

@@ -13,7 +13,19 @@ public class Helpers {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    public static String getStringDate(Date date){
+    public static boolean isDateOfQuarterYear(Date date, int quarter, int year) {
+        SimpleDateFormat formatMonth = new SimpleDateFormat("MM");
+        SimpleDateFormat formatYear = new SimpleDateFormat("yyyy");
+        String strMonth = formatMonth.format(date);
+        String strYear = formatYear.format(date);
+
+        int mon = Integer.parseInt(strMonth);
+        int dateQuarter = (mon - 1) / 3 + 1;
+
+        return strYear.equals(String.valueOf(year)) && dateQuarter == quarter;
+    }
+
+    public static String getStringDate(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
         return format.format(date);
     }

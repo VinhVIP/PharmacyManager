@@ -7,6 +7,9 @@ import com.team28.qlnhathuoc.room.dao.CTBanLeDao;
 import com.team28.qlnhathuoc.room.dao.PharmacyDao;
 import com.team28.qlnhathuoc.room.entity.CTBanLe;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
+import com.team28.qlnhathuoc.room.entity.relations.HoaDonWithThuoc;
+
+import java.util.List;
 
 public class Task {
     public static class GetCTBanLeTask extends AsyncTask<String, Void, CTBanLe> {
@@ -58,6 +61,32 @@ public class Task {
         @Override
         protected NhaThuoc doInBackground(String... strings) {
             return dao.getPharmacyByName(strings[0]);
+        }
+    }
+
+    public static class GetBillsOfPharmacyTask extends AsyncTask<String, Void, List<HoaDonWithThuoc>> {
+        private final BillDao dao;
+
+        public GetBillsOfPharmacyTask(BillDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected List<HoaDonWithThuoc> doInBackground(String... strings) {
+            return dao.getBillsOfPharmacy(strings[0]);
+        }
+    }
+
+    public static class GetListPharmacyTask extends AsyncTask<Void, Void, List<NhaThuoc>> {
+        private final PharmacyDao dao;
+
+        public GetListPharmacyTask(PharmacyDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected List<NhaThuoc> doInBackground(Void... voids) {
+            return dao.getPharmacyOrigin();
         }
     }
 }

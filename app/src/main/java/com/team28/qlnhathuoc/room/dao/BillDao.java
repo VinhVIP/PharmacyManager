@@ -25,4 +25,7 @@ public interface BillDao {
 
     @Insert
     void insertBillDetail(CTBanLe ctBanLe);
+
+    @Query("SELECT * FROM HoaDon WHERE maNT LIKe :maNT")
+    List<HoaDonWithThuoc> getBillsOfPharmacy(String maNT);
 }

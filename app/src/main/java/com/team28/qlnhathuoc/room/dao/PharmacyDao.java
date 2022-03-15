@@ -34,4 +34,6 @@ public interface PharmacyDao {
     @Query("SELECT EXISTS(SELECT * FROM HoaDon WHERE maNT LIKE :maNT)")
     boolean isPharmacyHasBill(String maNT);
 
+    @Query("SELECT * FROM NhaThuoc")
+    List<NhaThuoc> getPharmacyOrigin();
 }

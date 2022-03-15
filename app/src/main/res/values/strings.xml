@@ -3,6 +3,8 @@
     <string name="nha_thuoc">Nhà thuốc</string>
     <string name="thuoc">Thuốc</string>
     <string name="hoa_don">Hóa đơn</string>
+    <string name="thong_ke">Thống kê</string>
+    <string name="thong_ke_quy">Doanh thu nhà thuốc</string>
     <string name="ct_hoa_don">Chi tiết hóa đơn</string>
     <string name="lap_hoa_don">Lập hóa đơn</string>
 
