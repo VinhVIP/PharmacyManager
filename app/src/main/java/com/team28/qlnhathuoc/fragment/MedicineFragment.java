@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,9 +24,11 @@ import com.team28.qlnhathuoc.databinding.FilterMedicineBinding;
 import com.team28.qlnhathuoc.databinding.FragmentMedicineBinding;
 import com.team28.qlnhathuoc.room.entity.CTBanLe;
 import com.team28.qlnhathuoc.room.entity.HoaDon;
+import com.team28.qlnhathuoc.room.entity.NhaThuoc;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.room.entity.relations.ThuocWithHoaDon;
 import com.team28.qlnhathuoc.utils.Constants;
+import com.team28.qlnhathuoc.utils.Helpers;
 import com.team28.qlnhathuoc.viewmodel.MedicineViewModel;
 
 import java.util.ArrayList;
@@ -83,7 +86,7 @@ public class MedicineFragment extends Fragment {
         });
 
         binding.btnClear.setOnClickListener(v -> binding.edSearch.setText(""));
-        binding.btnFilter.setOnClickListener(v -> showDialogFilter());
+//        binding.btnFilter.setOnClickListener(v -> showDialogFilter());
 
         searchMedicine();
     }
@@ -147,5 +150,26 @@ public class MedicineFragment extends Fragment {
 
         intent.putExtra(Constants.REQUEST_ACTION, bundle);
         startActivity(intent);
+    }
+
+    public void showDialogDeleteMedicine(Thuoc medicine) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+        builder.setTitle("Xác nhận xóa");
+//        alertDialogBuilder.setIcon(R.drawable.question);
+        builder.setMessage(String.format("Bạn thực sự muốn xóa thuốc %s ?", medicine.tenThuoc));
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("Đồng ý", (arg0, arg1) -> {
+            if (viewModel.canDeleteMedicine(medicine)) {
+                viewModel.deleteMedicine(medicine);
+            } else {
+                Helpers.showToast(this.getContext(), "Nhà thuốc đã có dữ liệu nên không thể xóa!");
+            }
+        });
+        builder.setNeutralButton("Hủy", (dialog, which) -> {
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

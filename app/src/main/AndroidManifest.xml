@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QLNhaThuoc">
         <activity
+            android:name=".activity.ChartMedicineActivity"
+            android:label="@string/thong_ke_thuoc"
+            android:exported="false" />
+        <activity
             android:name=".activity.ChartPharmacyActivity"
             android:exported="false"
             android:label="@string/thong_ke_quy" />

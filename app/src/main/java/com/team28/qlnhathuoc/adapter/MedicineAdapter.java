@@ -46,7 +46,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return medicineList.size();
+        return medicineList == null ? 0 : medicineList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,15 +64,15 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
             itemBinding.tvDonGia.setText(Helpers.formatCurrency(medicine.thuoc.donGia) + " đ");
             itemBinding.tvDonViTinh.setText(medicine.thuoc.donViTinh);
 
-            float totalMoney = medicine.total * medicine.thuoc.donGia;
-            itemBinding.tvTotal.setText(medicine.total + " " + medicine.thuoc.donViTinh + " -> " + Helpers.formatCurrency(totalMoney) + " đ");
+//            float totalMoney = medicine.total * medicine.thuoc.donGia;
+//            itemBinding.tvTotal.setText(medicine.total + " " + medicine.thuoc.donViTinh + " -> " + Helpers.formatCurrency(totalMoney) + " đ");
 
             itemBinding.getRoot().setOnClickListener(v -> {
                 fragment.goToEditMedicine(medicine.thuoc);
             });
 
             itemBinding.getRoot().setOnLongClickListener(v -> {
-//                fragment.showDialogDeletePharmacy(medicine);
+                fragment.showDialogDeleteMedicine(medicine.thuoc);
                 return false;
             });
         }

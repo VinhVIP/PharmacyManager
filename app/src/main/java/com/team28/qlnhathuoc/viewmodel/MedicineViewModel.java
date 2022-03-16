@@ -50,6 +50,10 @@ public class MedicineViewModel extends AndroidViewModel {
         executor.execute(() -> medicineDao.deleteMedicine(medicine));
     }
 
+    public boolean canDeleteMedicine(Thuoc medicine) {
+        return !medicineDao.isMedicineSold(medicine.maThuoc);
+    }
+
     public Thuoc getMedicineById(String maThuoc) {
         GetMedicineByIdTask task = new GetMedicineByIdTask(medicineDao);
         try {

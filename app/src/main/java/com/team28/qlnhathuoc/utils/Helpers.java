@@ -25,6 +25,13 @@ public class Helpers {
         return strYear.equals(String.valueOf(year)) && dateQuarter == quarter;
     }
 
+    public static boolean isDateOfYear(Date date, int year) {
+        SimpleDateFormat formatYear = new SimpleDateFormat("yyyy");
+        String strYear = formatYear.format(date);
+
+        return strYear.equals(String.valueOf(year));
+    }
+
     public static String getStringDate(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
         return format.format(date);

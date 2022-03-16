@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.team28.qlnhathuoc.activity.ChartMedicineActivity;
 import com.team28.qlnhathuoc.activity.ChartPharmacyActivity;
 import com.team28.qlnhathuoc.databinding.FragmentStatisticBinding;
 
@@ -32,6 +33,9 @@ public class StatisticFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.btnStatisticPharmacy.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), ChartPharmacyActivity.class));
+        });
+        binding.btnStatisticMedicine.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), ChartMedicineActivity.class));
         });
     }
 }

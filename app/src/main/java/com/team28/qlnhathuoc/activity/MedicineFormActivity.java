@@ -2,13 +2,18 @@ package com.team28.qlnhathuoc.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.team28.qlnhathuoc.R;
 import com.team28.qlnhathuoc.databinding.ActivityMedicineFormBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Constants;
@@ -23,7 +28,7 @@ public class MedicineFormActivity extends AppCompatActivity {
     private boolean isEdit;
     private String oldMedicineId;
 
-    private String[] dvt = {"Hộp", "Vỉ", "Viên", "Lọ", "Chai"};
+    private String[] dvt = {"Hộp", "Vỉ", "Viên", "Lọ", "Chai", "Kit"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,7 @@ public class MedicineFormActivity extends AppCompatActivity {
         if (data != null) {
             isEdit = true;
 
-            oldMedicineId = data.getString(Constants.MANT);
+            oldMedicineId = data.getString(Constants.MATHUOC);
 
             binding.edMaThuoc.setText(data.getString(Constants.MATHUOC));
             binding.edTenThuoc.setText(data.getString(Constants.TENTHUOC));
@@ -106,12 +111,45 @@ public class MedicineFormActivity extends AppCompatActivity {
                 Float.parseFloat(binding.edDonGia.getText().toString()));
     }
 
+    public void showDialogDeleteMedicine(Thuoc medicine) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Xác nhận xóa");
+//        alertDialogBuilder.setIcon(R.drawable.question);
+        builder.setMessage(String.format("Bạn thực sự muốn xóa thuốc %s ?", medicine.tenThuoc));
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("Đồng ý", (arg0, arg1) -> {
+            viewModel.deleteMedicine(medicine);
+            Toast.makeText(this, "Xóa thuốc thành công!", Toast.LENGTH_SHORT).show();
+            finish();
+        });
+        builder.setNeutralButton("Hủy", (dialog, which) -> {
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+            case R.id.menuDelete:
+                Thuoc medicine = viewModel.getMedicineById(oldMedicineId);
+
+                if (viewModel.canDeleteMedicine(medicine)) {
+                    showDialogDeleteMedicine(medicine);
+                } else {
+                    Toast.makeText(this, "Thuốc đã từng được bán nên không thể xóa!", Toast.LENGTH_SHORT).show();
+                }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (isEdit) getMenuInflater().inflate(R.menu.menu_form, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

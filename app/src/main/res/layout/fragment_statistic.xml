@@ -14,4 +14,11 @@
         android:layout_margin="12dp"
         android:text="Thống kê doanh thu nhà thuốc" />
 
+    <Button
+        android:id="@+id/btnStatisticMedicine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="Thống kê thuốc" />
+
 </LinearLayout>

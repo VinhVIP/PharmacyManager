@@ -32,4 +32,7 @@ public interface MedicineDao {
 
     @Query("SELECT * FROM Thuoc")
     LiveData<List<Thuoc>> getAllMedicine();
+
+    @Query("SELECT EXISTS(SELECT * FROM CTBanLe WHERE maThuoc LIKE :maThuoc)")
+    boolean isMedicineSold(String maThuoc);
 }

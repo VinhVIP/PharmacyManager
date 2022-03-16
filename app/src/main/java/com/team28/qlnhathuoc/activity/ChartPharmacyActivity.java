@@ -3,6 +3,7 @@ package com.team28.qlnhathuoc.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +15,16 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.team28.qlnhathuoc.databinding.ActivityChartPharmacyBinding;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
+import com.team28.qlnhathuoc.utils.Helpers;
 import com.team28.qlnhathuoc.viewmodel.ChartPharmacyViewModel;
 
 import java.util.ArrayList;
@@ -55,8 +60,6 @@ public class ChartPharmacyActivity extends AppCompatActivity {
         chart = binding.barChart;
 
         configureChartAppearance();
-
-        viewModel.filter(2022);
 
         createPharmacyChartData();
 
@@ -166,6 +169,20 @@ public class ChartPharmacyActivity extends AppCompatActivity {
             chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(labelsPharmacy));
             chart.getXAxis().setAxisMaximum(labelsPharmacy.size());
 
+            chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+                @Override
+                public void onValueSelected(Entry e, Highlight h) {
+                    int index = (int) e.getX();
+                    String mess = Helpers.formatCurrency(e.getY()) + " đ";
+                    Toast.makeText(ChartPharmacyActivity.this, mess, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onNothingSelected() {
+
+                }
+            });
+
             prepareChartData(data);
 
         });
@@ -179,6 +196,7 @@ public class ChartPharmacyActivity extends AppCompatActivity {
         float groupSpace = 1f - ((BAR_SPACE + BAR_WIDTH) * GROUPS);
         chart.groupBars(0, groupSpace, BAR_SPACE);
 
+        chart.animateY(1500);
         chart.invalidate();
     }
 
