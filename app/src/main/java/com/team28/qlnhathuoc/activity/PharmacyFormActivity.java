@@ -125,7 +125,8 @@ public class PharmacyFormActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                super.onBackPressed();
+                break;
             case R.id.menuDelete:
                 NhaThuoc pharmacy = viewModel.getPharmacyById(oldPharmacyId);
 
@@ -134,6 +135,7 @@ public class PharmacyFormActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, "Nhà thuốc đã có dữ liệu bán thuốc nên không thể xóa!", Toast.LENGTH_SHORT).show();
                 }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

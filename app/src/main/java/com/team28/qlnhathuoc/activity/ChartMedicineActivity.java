@@ -212,7 +212,7 @@ public class ChartMedicineActivity extends AppCompatActivity {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
                 int index = (int) e.getX();
-                String mess = medicineList.get(index).thuoc.tenThuoc + " - " + Helpers.formatCurrency(e.getY()) + " đ";
+                String mess = medicineList.get(index).thuoc.tenThuoc + " : " + Helpers.formatCurrency(e.getY()) + " đ";
                 Toast.makeText(ChartMedicineActivity.this, mess, Toast.LENGTH_SHORT).show();
             }
 

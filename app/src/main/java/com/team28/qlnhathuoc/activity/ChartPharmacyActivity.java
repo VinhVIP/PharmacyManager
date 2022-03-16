@@ -28,6 +28,7 @@ import com.team28.qlnhathuoc.utils.Helpers;
 import com.team28.qlnhathuoc.viewmodel.ChartPharmacyViewModel;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ChartPharmacyActivity extends AppCompatActivity {
@@ -76,6 +77,8 @@ public class ChartPharmacyActivity extends AppCompatActivity {
     }
 
     private void chooseYear() {
+        viewModel.filter(Calendar.getInstance().get(Calendar.YEAR));
+
         binding.btnYearMinus.setOnClickListener(v -> {
             int year = Integer.parseInt(binding.tvYear.getText().toString());
             year--;

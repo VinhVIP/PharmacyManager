@@ -2,7 +2,6 @@ package com.team28.qlnhathuoc.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -134,7 +133,8 @@ public class MedicineFormActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                super.onBackPressed();
+                break;
             case R.id.menuDelete:
                 Thuoc medicine = viewModel.getMedicineById(oldMedicineId);
 
@@ -143,6 +143,7 @@ public class MedicineFormActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, "Thuốc đã từng được bán nên không thể xóa!", Toast.LENGTH_SHORT).show();
                 }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
