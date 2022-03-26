@@ -31,7 +31,7 @@ public class PharmacyFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentPharmacyBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(PharmacyViewModel.class);
 

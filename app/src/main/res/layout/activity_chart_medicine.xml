@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:text="2022"
                 android:textColor="@color/black"
-                android:textSize="17sp"
+                android:textSize="@dimen/default_text_size"
                 android:textStyle="bold" />
 
             <ImageView
@@ -47,7 +47,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:drawablePadding="8dp"
-            android:text="Tất cả"
+            android:text="@string/all"
             android:textStyle="bold" />
     </RelativeLayout>
 

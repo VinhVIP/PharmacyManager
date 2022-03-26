@@ -130,14 +130,14 @@ public class MedicineFragment extends Fragment {
         return binding.edSearch.getText().toString().trim().toLowerCase();
     }
 
-    private void showDialogFilter() {
-        Dialog dialog = new Dialog(this.getContext());
-        FilterMedicineBinding dialogBinding = FilterMedicineBinding.inflate(getLayoutInflater());
-        dialog.setContentView(dialogBinding.getRoot());
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        dialog.show();
-    }
+//    private void showDialogFilter() {
+//        Dialog dialog = new Dialog(this.getContext());
+//        FilterMedicineBinding dialogBinding = FilterMedicineBinding.inflate(getLayoutInflater());
+//        dialog.setContentView(dialogBinding.getRoot());
+//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//        dialog.show();
+//    }
 
     public void goToEditMedicine(Thuoc medicine) {
         Intent intent = new Intent(this.getActivity(), MedicineFormActivity.class);

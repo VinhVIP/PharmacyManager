@@ -8,9 +8,32 @@
     <string name="thong_ke_thuoc">Doanh thu theo thuốc</string>
     <string name="ct_hoa_don">Chi tiết hóa đơn</string>
     <string name="lap_hoa_don">Lập hóa đơn</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_bill_detail">BillDetailActivity</string>
+    <string name="ma_hoa_don">Mã hóa đơn:</string>
+    <string name="lap_tai">Lập tại:</string>
+    <string name="thanh_toan">Thanh toán:</string>
+    <string name="thoi_gian">Thời gian:</string>
+    <string name="ctds">Chi tiết danh sách:</string>
+    <string name="tong">Tổng cộng</string>
+    <string name="all">Tất cả</string>
+    <string name="ma_thuoc">Mã thuốc:</string>
+    <string name="ten_thuoc">Tên thuốc:</string>
+    <string name="dvt">Đơn vị tính:</string>
+    <string name="don_gia">Đơn giá:</string>
+    <string name="them">Thêm</string>
+    <string name="nhap_ma_thuoc">Nhập mã thuốc</string>
+    <string name="nhap_ten_thuoc">Nhập tên thuốc</string>
+    <string name="nhap_dvt">Nhập đơn vị tính</string>
+    <string name="nhap_don_gia">Nhập đơn giá</string>
+    <string name="ma_nt">Mã nhà thuốc:</string>
+    <string name="ten_nt">Tên nhà thuốc:</string>
+    <string name="dia_chi">Địa chỉ:</string>
+    <string name="nhap_ma_nt">Nhập mã nhà thuốc</string>
+    <string name="nhap_ten_nt">Nhập tên nhà thuốc:</string>
+    <string name="nhap_dia_chi">Nhập địa chỉ</string>
+    <string name="nhap_tu_khoa">Nhập từ khóa cần tìm...</string>
+    <string name="xem_ds">Xem danh sách</string>
+    <string name="thong_ke_doanh_thu">Thống kê doanh thu</string>
+    <string name="theo_nt">Theo nhà thuốc</string>
+    <string name="theo_thuoc">Theo loại thuốc</string>
 
 </resources>

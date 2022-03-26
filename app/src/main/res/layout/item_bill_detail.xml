@@ -15,7 +15,7 @@
         android:paddingHorizontal="8dp"
         android:paddingVertical="6dp"
         android:text="20"
-        android:textSize="14sp"
+        android:textSize="@dimen/tiny_text_size"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginEnd="8dp"
         android:text="100,000 đ"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="@dimen/small_text_size"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="PND"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/symbol"
@@ -69,7 +69,7 @@
             android:layout_toEndOf="@id/symbol"
             android:text="Panadol Extra"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/tvDonGia"
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTenThuoc"
             android:text="25,000 đ / Hộp"
-            android:textSize="14sp" />
+            android:textSize="@dimen/tiny_text_size" />
     </RelativeLayout>
 
     <View

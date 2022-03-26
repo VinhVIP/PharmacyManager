@@ -12,9 +12,10 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:paddingVertical="8dp"
-        android:text="Chi Tiết Hóa Đơn"
+        android:text="@string/ct_hoa_don"
+        android:textAllCaps="true"
         android:textColor="@color/purple_500"
-        android:textSize="20sp"
+        android:textSize="@dimen/big_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,9 +57,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="Nhà thuốc: "
+                    android:text="@string/nha_thuoc"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/small_text_size"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -75,9 +76,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/relaNT"
-                android:text="Tổng cộng: "
+                android:text="@string/tong"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/small_text_size"
                 android:textStyle="bold" />
 
             <TextView
@@ -88,7 +89,7 @@
                 android:layout_alignParentEnd="true"
                 android:text="450,000 đ"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/small_text_size"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -98,7 +99,7 @@
                 android:layout_below="@id/tvTotalMoney"
                 android:layout_marginVertical="8dp"
                 android:background="@drawable/bg_button_view_bill"
-                android:text="Lập hóa đơn"
+                android:text="@string/lap_hoa_don"
                 android:textColor="@color/white" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

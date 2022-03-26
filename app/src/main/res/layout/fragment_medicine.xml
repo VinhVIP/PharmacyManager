@@ -18,7 +18,7 @@
             style="@style/InputField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập từ khóa cần tìm..." />
+            android:hint="@string/nhap_tu_khoa" />
 
         <ImageView
             android:id="@+id/btnClear"

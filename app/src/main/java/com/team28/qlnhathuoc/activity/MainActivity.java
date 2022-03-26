@@ -25,13 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         setupViewPager();
         setupBottomNav();
-//        MyDao myDao = MyDatabase.getInstance(this).myDao();
-//
-//        myDao.insertNhaThuoc(new NhaThuoc("NT001", "Nhà thuôc Quang Vinh", "TPHCM"));
-//        myDao.insertNhaThuoc(new NhaThuoc("NT002", "Nhà thuôc Hoàng Long", "TPHCM"));
-//
-//        List<NhaThuoc> list = myDao.nhaThuocList();
-//        Log.d("VINH", list.size() + "");
     }
 
     private void setupViewPager() {

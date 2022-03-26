@@ -20,8 +20,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mã hóa đơn:"
-                android:textSize="16sp" />
+                android:text="@string/ma_hoa_don"
+                android:textSize="@dimen/small_text_size" />
 
             <TextView
                 android:id="@+id/tvsoHD"
@@ -30,7 +30,7 @@
                 android:layout_marginStart="12dp"
                 android:text="HD001"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/small_text_size"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -43,8 +43,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lập tại:"
-                android:textSize="16sp" />
+                android:text="@string/lap_tai"
+                android:textSize="@dimen/small_text_size" />
 
             <TextView
                 android:id="@+id/tvTenNT"
@@ -53,7 +53,7 @@
                 android:layout_marginStart="12dp"
                 android:text="Nhà thuốc Quang Vinh"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/small_text_size"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -66,8 +66,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thời gian:"
-                android:textSize="16sp" />
+                android:text="@string/thoi_gian"
+                android:textSize="@dimen/small_text_size" />
 
             <TextView
                 android:id="@+id/tvNgayHD"
@@ -76,7 +76,7 @@
                 android:layout_marginStart="12dp"
                 android:text="13/03/2022 - 08:30"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="@dimen/small_text_size"
                 android:textStyle="italic" />
         </LinearLayout>
 
@@ -85,9 +85,9 @@
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
             android:paddingTop="8dp"
-            android:text="Chi tiết danh sách:"
+            android:text="@string/ctds"
             android:textColor="@color/purple_700"
-            android:textSize="15sp"
+            android:textSize="@dimen/small_text_size"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -114,9 +114,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tổng cộng"
+                android:text="@string/tong"
                 android:textColor="@color/purple_500"
-                android:textSize="18sp"
+                android:textSize="@dimen/default_text_size"
                 android:textStyle="bold" />
 
             <TextView
@@ -126,7 +126,7 @@
                 android:layout_alignParentEnd="true"
                 android:text="450,500 đ"
                 android:textColor="@color/purple_500"
-                android:textSize="18sp"
+                android:textSize="@dimen/default_text_size"
                 android:textStyle="bold" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

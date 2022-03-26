@@ -16,7 +16,7 @@
             style="@style/InputField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập từ khóa cần tìm..." />
+            android:hint="@string/nhap_tu_khoa" />
 
         <ImageView
             android:id="@+id/btnClear"
@@ -44,7 +44,7 @@
         android:layout_marginHorizontal="8dp"
         android:layout_marginVertical="8dp"
         android:background="@drawable/bg_button_view_bill"
-        android:text="Xem danh sách"
+        android:text="@string/xem_ds"
         android:textColor="@color/white" />
 
 </RelativeLayout>

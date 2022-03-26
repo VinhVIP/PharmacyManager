@@ -12,14 +12,14 @@
         style="@style/TextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mã nhà thuốc:" />
+        android:text="@string/ma_nt" />
 
     <EditText
         android:id="@+id/edMaNT"
         style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập mã nhà thuốc"
+        android:hint="@string/nhap_ma_nt"
         android:inputType="text"
         android:maxLines="1" />
 
@@ -27,14 +27,14 @@
         style="@style/TextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tên nhà thuốc:" />
+        android:text="@string/ten_nt" />
 
     <EditText
         android:id="@+id/edTenNT"
         style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập tên nhà thuốc"
+        android:hint="@string/nhap_ten_nt"
         android:inputType="text"
         android:maxLines="1" />
 
@@ -42,24 +42,24 @@
         style="@style/TextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Địa chỉ:" />
+        android:text="@string/dia_chi" />
 
     <EditText
         android:id="@+id/edDiaChi"
         style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập địa chỉ"
+        android:hint="@string/nhap_dia_chi"
         android:maxLines="5" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmit"
         style="@style/ActiveButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:text="Thêm" />
+        android:text="@string/them" />
 
 
 </LinearLayout>

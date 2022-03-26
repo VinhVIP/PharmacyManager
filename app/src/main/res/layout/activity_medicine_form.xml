@@ -12,14 +12,14 @@
         style="@style/TextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mã thuốc:" />
+        android:text="@string/ma_thuoc" />
 
     <EditText
         android:id="@+id/edMaThuoc"
         style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập mã thuốc"
+        android:hint="@string/nhap_ma_thuoc"
         android:inputType="text"
         android:maxLines="1" />
 
@@ -27,14 +27,14 @@
         style="@style/TextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tên thuốc:" />
+        android:text="@string/ten_thuoc" />
 
     <EditText
         android:id="@+id/edTenThuoc"
         style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập tên thuốc"
+        android:hint="@string/nhap_ten_thuoc"
         android:inputType="text"
         android:maxLines="1" />
 
@@ -42,39 +42,39 @@
         style="@style/TextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đơn vị tính:" />
+        android:text="@string/dvt" />
 
     <com.team28.qlnhathuoc.utils.AutoCompleteEditText
         android:id="@+id/edDVT"
         style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập đơn vị"
+        android:hint="@string/nhap_dvt"
         android:maxLines="1" />
 
     <TextView
         style="@style/TextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đơn giá:" />
+        android:text="@string/don_gia" />
 
     <EditText
         android:id="@+id/edDonGia"
         style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập đơn giá"
+        android:hint="@string/nhap_don_gia"
         android:inputType="numberDecimal"
         android:maxLines="1" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmit"
         style="@style/ActiveButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:text="Thêm" />
+        android:text="@string/them" />
 
 
 </LinearLayout>
