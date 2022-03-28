@@ -26,6 +26,7 @@ public class Thuoc implements Serializable {
         this.donGia = donGia;
     }
 
+    // Field này sẽ không được tạo
     @Ignore
     public int soLuong;
 }

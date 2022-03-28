@@ -9,12 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
+        android:background="@drawable/bg_amount"
         android:gravity="center"
         android:minWidth="32dp"
         android:paddingHorizontal="8dp"
         android:paddingVertical="6dp"
-        android:text="3"
-        android:textColor="@color/black"
+        android:text="20"
+        android:textColor="@color/white"
         android:textSize="@dimen/tiny_text_size"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="90,000 đ"
+        android:text="100,000 đ"
         android:textColor="@color/black"
         android:textSize="@dimen/small_text_size"
         android:textStyle="bold"
@@ -49,7 +50,7 @@
             android:id="@+id/tvMaThuoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SRH"
+            android:text="PND"
             android:textColor="@color/black"
             android:textSize="@dimen/small_text_size" />
 
@@ -67,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/symbol"
-            android:text="Siro ho"
+            android:text="Panadol Extra"
             android:textColor="@color/black"
             android:textSize="@dimen/small_text_size" />
 
@@ -76,8 +77,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTenThuoc"
-            android:text="30,000 đ / Hộp"
+            android:text="25,000 đ / Hộp"
             android:textSize="@dimen/tiny_text_size" />
     </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.adapter.BillAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentBillBinding;
 import com.team28.qlnhathuoc.room.entity.CTBanLe;
 import com.team28.qlnhathuoc.room.entity.Thuoc;

@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.adapter.MedicineAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentMedicineBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.ui.medicine.medicine_form.MedicineFormActivity;
@@ -128,13 +127,6 @@ public class MedicineFragment extends Fragment {
         Intent intent = new Intent(this.getActivity(), MedicineFormActivity.class);
         intent.putExtra(Constants.MEDICINE, medicine);
 
-//        Bundle bundle = new Bundle();
-//        bundle.putString(Constants.MATHUOC, medicine.maThuoc);
-//        bundle.putString(Constants.TENTHUOC, medicine.tenThuoc);
-//        bundle.putString(Constants.DVT, medicine.donViTinh);
-//        bundle.putFloat(Constants.DONGIA, medicine.donGia);
-//
-//        intent.putExtra(Constants.REQUEST_ACTION, bundle);
         startActivity(intent);
     }
 

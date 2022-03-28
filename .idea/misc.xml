@@ -15,9 +15,11 @@
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.209" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/drawable/ic_launcher_background.xml" value="0.219" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/drawable/ic_round_add_24.xml" value="0.2155" />
+        <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout-v26/fragment_bottom_sheet_change_amout.xml" value="0.3625" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/a.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/activity_bill_create.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/activity_bill_detail.xml" value="0.33" />
+        <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/activity_bill_detail_preview.xml" value="0.3625" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/activity_chart_medicine.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/activity_chart_pharmacy.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/activity_main.xml" value="0.3564102564102564" />
@@ -34,7 +36,8 @@
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/fragment_pharmacy.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/fragment_statistic.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/item_bill.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/item_bill_detail.xml" value="0.33" />
+        <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/item_bill_detail.xml" value="0.5" />
+        <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/item_bill_detail_preview.xml" value="0.3625" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/item_medicine.xml" value="0.33" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/item_medicine_bill.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/vinhv/AndroidStudioProjects/QLNhaThuoc/app/src/main/res/layout/item_pharmacy.xml" value="0.3619791666666667" />

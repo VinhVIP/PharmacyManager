@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.adapter.PharmacyAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentPharmacyBinding;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
 import com.team28.qlnhathuoc.ui.pharmacy.pharmacy_form.PharmacyFormActivity;

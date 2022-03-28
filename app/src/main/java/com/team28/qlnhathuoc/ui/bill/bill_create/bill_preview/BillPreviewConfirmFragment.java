@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.ui.bill.bill_create;
+package com.team28.qlnhathuoc.ui.bill.bill_create.bill_preview;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,10 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.adapter.BillDetailAdapter;
-import com.team28.qlnhathuoc.adapter.SpinnerPharmacyAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentBillPreviewConfirmBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
+import com.team28.qlnhathuoc.ui.bill.bill_create.BillCreateViewModel;
 import com.team28.qlnhathuoc.utils.Helpers;
 
 import java.util.stream.Collectors;
@@ -28,14 +27,14 @@ public class BillPreviewConfirmFragment extends Fragment {
 
     private BillCreateViewModel viewModel;
 
-    private BillDetailAdapter adapter;
+    private BillPreviewAdapter adapter;
     private SpinnerPharmacyAdapter spinnerAdapter;
 
     public BillPreviewConfirmFragment() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentBillPreviewConfirmBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(BillCreateViewModel.class);
@@ -51,7 +50,7 @@ public class BillPreviewConfirmFragment extends Fragment {
     }
 
     private void setupRecyclerView() {
-        adapter = new BillDetailAdapter(this);
+        adapter = new BillPreviewAdapter(this);
         binding.recycler.setAdapter(adapter);
         binding.recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 

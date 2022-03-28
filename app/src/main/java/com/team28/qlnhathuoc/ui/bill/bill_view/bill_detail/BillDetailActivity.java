@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.adapter.BillDetailAdapter;
 import com.team28.qlnhathuoc.databinding.ActivityBillDetailBinding;
 import com.team28.qlnhathuoc.room.entity.relations.HoaDonWithThuoc;
 import com.team28.qlnhathuoc.utils.Constants;

@@ -7,6 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="counter">#3F51B5</color>
+    <color name="item_bill">#FFCCBC</color>
+    <color name="stoke_counter">#FF9800</color>
     <color name="text_secondary">#302C2C</color>
     <color name="bg_button_bill">#4CAF50</color>
 </resources>

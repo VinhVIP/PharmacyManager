@@ -1,5 +1,6 @@
-package com.team28.qlnhathuoc.adapter;
+package com.team28.qlnhathuoc.ui.bill.bill_create.bill_choose;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -7,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team28.qlnhathuoc.databinding.ItemMedicineBillBinding;
-import com.team28.qlnhathuoc.ui.bill.bill_create.BillChooseMedicineFragment;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Helpers;
 
@@ -26,11 +26,7 @@ public class MedicineBillAdapter extends RecyclerView.Adapter<MedicineBillAdapte
         medicineList = new ArrayList<>();
     }
 
-    public MedicineBillAdapter(BillChooseMedicineFragment fragment, List<Thuoc> medicineList) {
-        this.fragment = fragment;
-        this.medicineList = medicineList;
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     public void setAdapter(List<Thuoc> medicineList) {
         this.medicineList = medicineList;
         notifyDataSetChanged();

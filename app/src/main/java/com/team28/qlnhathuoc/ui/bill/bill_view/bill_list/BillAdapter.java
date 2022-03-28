@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.adapter;
+package com.team28.qlnhathuoc.ui.bill.bill_view.bill_list;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team28.qlnhathuoc.databinding.ItemBillBinding;
-import com.team28.qlnhathuoc.ui.bill.bill_view.bill_list.BillFragment;
 import com.team28.qlnhathuoc.room.entity.relations.HoaDonWithThuoc;
 import com.team28.qlnhathuoc.utils.Helpers;
 
@@ -23,10 +22,6 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
     public BillAdapter(BillFragment fragment) {
         this.fragment = fragment;
         billsList = new ArrayList<>();
-    }
-
-    public BillAdapter(List<HoaDonWithThuoc> billsList) {
-        this.billsList = billsList;
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.ui.bill.bill_create;
+package com.team28.qlnhathuoc.ui.bill.bill_create.bill_choose;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,9 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.adapter.MedicineBillAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentBillChooseMedicineBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
+import com.team28.qlnhathuoc.ui.bill.bill_create.BillCreateActivity;
+import com.team28.qlnhathuoc.ui.bill.bill_create.BillCreateViewModel;
 import com.team28.qlnhathuoc.utils.Helpers;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class BillChooseMedicineFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentBillChooseMedicineBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(BillCreateViewModel.class);

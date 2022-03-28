@@ -36,13 +36,12 @@ public class ChartPharmacyActivity extends AppCompatActivity {
 
     private ChartPharmacyViewModel viewModel;
 
-    private static final int MAX_X_VALUE = 4;
-    private static final int MAX_Y_VALUE = 50;
-    private static final int MIN_Y_VALUE = 5;
+    // Biểu đồ 4 cột ghép (4 quý)
     private static final int GROUPS = 4;
 
-    private static final float BAR_SPACE = 0.05f;
-    private static final float BAR_WIDTH = 0.2f;
+    private static final float BAR_SPACE = 0.05f;   // khoảng cách giữa các cột
+    private static final float BAR_WIDTH = 0.2f;    // kích thước mỗi cột
+
     private BarChart chart;
 
     @Override
@@ -55,7 +54,6 @@ public class ChartPharmacyActivity extends AppCompatActivity {
 
 
         viewModel = new ViewModelProvider(this).get(ChartPharmacyViewModel.class);
-
 
         chart = binding.barChart;
 
@@ -76,6 +74,7 @@ public class ChartPharmacyActivity extends AppCompatActivity {
     }
 
     private void chooseYear() {
+        // Mặc định sẽ hiển thị dữ liệu của năm hiện tại
         viewModel.filter(Calendar.getInstance().get(Calendar.YEAR));
 
         binding.btnYearMinus.setOnClickListener(v -> {
@@ -115,6 +114,8 @@ public class ChartPharmacyActivity extends AppCompatActivity {
         leftAxis.setDrawGridLines(false);
 //        leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f);
+
+        // format lại cách hiển thị các mốc giá trị
         leftAxis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {

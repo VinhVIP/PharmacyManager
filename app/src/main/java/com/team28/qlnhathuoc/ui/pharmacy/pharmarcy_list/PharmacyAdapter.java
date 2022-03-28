@@ -1,5 +1,6 @@
-package com.team28.qlnhathuoc.adapter;
+package com.team28.qlnhathuoc.ui.pharmacy.pharmarcy_list;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -7,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team28.qlnhathuoc.databinding.ItemPharmacyBinding;
-import com.team28.qlnhathuoc.ui.pharmacy.pharmarcy_list.PharmacyFragment;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
 
 import java.util.ArrayList;
@@ -23,10 +23,7 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
         pharmacyList = new ArrayList<>();
     }
 
-    public PharmacyAdapter(List<NhaThuoc> pharmacyList) {
-        this.pharmacyList = pharmacyList;
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     public void setAdapter(List<NhaThuoc> pharmacyList) {
         this.pharmacyList = pharmacyList;
         notifyDataSetChanged();
@@ -66,10 +63,6 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
                 fragment.goToEditPharmacy(pharmacy);
             });
 
-//            itemBinding.getRoot().setOnLongClickListener(v -> {
-//                fragment.showDialogDeletePharmacy(pharmacy);
-//                return false;
-//            });
         }
     }
 }

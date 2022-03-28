@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.team28.qlnhathuoc.R;
 import com.team28.qlnhathuoc.databinding.ActivityBillCreateBinding;
+import com.team28.qlnhathuoc.ui.bill.bill_create.bill_choose.BillChooseMedicineFragment;
+import com.team28.qlnhathuoc.ui.bill.bill_create.bill_preview.BillPreviewConfirmFragment;
 
 public class BillCreateActivity extends AppCompatActivity {
 

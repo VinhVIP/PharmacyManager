@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.ui.bill.bill_create;
+package com.team28.qlnhathuoc.ui.bill.bill_create.bill_preview;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.team28.qlnhathuoc.databinding.FragmentBottomSheetChangeAmoutBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
+import com.team28.qlnhathuoc.ui.bill.bill_create.BillCreateViewModel;
 
 public class BottomSheetChangeAmountFragment extends BottomSheetDialogFragment {
 

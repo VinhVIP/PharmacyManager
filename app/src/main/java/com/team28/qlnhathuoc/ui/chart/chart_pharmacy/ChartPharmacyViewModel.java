@@ -86,9 +86,7 @@ public class ChartPharmacyViewModel extends AndroidViewModel {
                             try {
                                 CTBanLe ctBanLe = task.execute(medicine.maThuoc, bill.hoaDon.soHD).get();
                                 total += ctBanLe.soLuong * medicine.donGia;
-                            } catch (ExecutionException e) {
-                                e.printStackTrace();
-                            } catch (InterruptedException e) {
+                            } catch (ExecutionException | InterruptedException e) {
                                 e.printStackTrace();
                             }
                         }

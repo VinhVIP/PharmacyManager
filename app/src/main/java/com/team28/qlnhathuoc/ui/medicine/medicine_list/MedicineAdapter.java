@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.adapter;
+package com.team28.qlnhathuoc.ui.medicine.medicine_list;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.team28.qlnhathuoc.databinding.ItemMedicineBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
-import com.team28.qlnhathuoc.ui.medicine.medicine_list.MedicineFragment;
 import com.team28.qlnhathuoc.utils.Helpers;
 
 import java.util.ArrayList;
@@ -23,10 +22,6 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
     public MedicineAdapter(MedicineFragment fragment) {
         this.fragment = fragment;
         medicineList = new ArrayList<>();
-    }
-
-    public MedicineAdapter(List<Thuoc> medicineList) {
-        this.medicineList = medicineList;
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -71,10 +66,6 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
                 fragment.goToEditMedicine(medicine);
             });
 
-//            itemBinding.getRoot().setOnLongClickListener(v -> {
-//                fragment.showDialogDeleteMedicine(medicine);
-//                return false;
-//            });
         }
     }
 }

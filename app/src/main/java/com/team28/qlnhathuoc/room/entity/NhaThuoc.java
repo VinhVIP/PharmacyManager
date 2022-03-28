@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+// tenNT là khóa duy nhất (unique)
 @Entity(indices = {@Index(value = {"tenNT"}, unique = true)})
 public class NhaThuoc implements Serializable {
     @PrimaryKey
