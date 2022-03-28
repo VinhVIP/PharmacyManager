@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.activity;
+package com.team28.qlnhathuoc.ui.bill.bill_create;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,9 +10,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.team28.qlnhathuoc.R;
 import com.team28.qlnhathuoc.databinding.ActivityBillCreateBinding;
-import com.team28.qlnhathuoc.fragment.BillChooseMedicineFragment;
-import com.team28.qlnhathuoc.fragment.BillPreviewConfirmFragment;
-import com.team28.qlnhathuoc.viewmodel.BillCreateViewModel;
 
 public class BillCreateActivity extends AppCompatActivity {
 

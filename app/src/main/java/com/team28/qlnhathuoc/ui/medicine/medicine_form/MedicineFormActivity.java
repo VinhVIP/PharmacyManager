@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.activity;
+package com.team28.qlnhathuoc.ui.medicine.medicine_form;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,15 +17,15 @@ import com.team28.qlnhathuoc.databinding.ActivityMedicineFormBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Constants;
 import com.team28.qlnhathuoc.utils.Helpers;
-import com.team28.qlnhathuoc.viewmodel.MedicineViewModel;
 
 public class MedicineFormActivity extends AppCompatActivity {
 
     private ActivityMedicineFormBinding binding;
-    private MedicineViewModel viewModel;
+    private MedicineFormViewModel viewModel;
 
-    private boolean isEdit;
-    private String oldMedicineId;
+    // Thuốc muốn cập nhật / xóa
+    // Nếu Form được mở là Form thêm thì oldMedicine = null
+    private Thuoc oldMedicine = null;
 
     private String[] dvt = {"Hộp", "Vỉ", "Viên", "Lọ", "Chai", "Kit"};
 
@@ -37,13 +37,13 @@ public class MedicineFormActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        viewModel = new ViewModelProvider(this).get(MedicineViewModel.class);
+        viewModel = new ViewModelProvider(this).get(MedicineFormViewModel.class);
 
         binding.btnSubmit.setOnClickListener(v -> {
             Thuoc medicine = getCurrentMedicine();
 
             if (medicine != null) {
-                if (isEdit) {
+                if (isEdit()) {
                     viewModel.updateMedicine(medicine);
                     finish();
                 } else {
@@ -64,24 +64,28 @@ public class MedicineFormActivity extends AppCompatActivity {
 
     private void getIntentData() {
         Intent intentData = getIntent();
-        Bundle data = intentData.getBundleExtra(Constants.REQUEST_ACTION);
-        if (data != null) {
-            isEdit = true;
 
-            oldMedicineId = data.getString(Constants.MATHUOC);
+        if (intentData.hasExtra(Constants.MEDICINE)) {
+            oldMedicine = (Thuoc) intentData.getSerializableExtra(Constants.MEDICINE);
 
-            binding.edMaThuoc.setText(data.getString(Constants.MATHUOC));
-            binding.edTenThuoc.setText(data.getString(Constants.TENTHUOC));
-            binding.edDVT.setText(data.getString(Constants.DVT));
-            binding.edDonGia.setText(Helpers.floatToString(data.getFloat(Constants.DONGIA, 0f)));
+            binding.edMaThuoc.setText(oldMedicine.maThuoc);
+            binding.edTenThuoc.setText(oldMedicine.tenThuoc);
+            binding.edDVT.setText(oldMedicine.donViTinh);
+            binding.edDonGia.setText(Helpers.floatToString(oldMedicine.donGia));
 
             binding.edMaThuoc.setEnabled(false);
             binding.btnSubmit.setText("Chỉnh sửa");
         }
     }
 
-    private void setupDVT(){
-        ArrayAdapter<String> dvtAdapter =new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvt);
+    // Kiểm tra form là form thêm hay là form chỉnh sửa
+    private boolean isEdit() {
+        return oldMedicine != null;
+    }
+
+    // Setup danh sách đơn vị tính cho custom EditText dvt
+    private void setupDVT() {
+        ArrayAdapter<String> dvtAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dvt);
         binding.edDVT.setAdapter(dvtAdapter);
         binding.edDVT.setThreshold(0);
     }
@@ -110,10 +114,13 @@ public class MedicineFormActivity extends AppCompatActivity {
                 Float.parseFloat(binding.edDonGia.getText().toString()));
     }
 
+    /*
+     * Hiển thị dialog xác nhận xóa
+     */
     public void showDialogDeleteMedicine(Thuoc medicine) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Xác nhận xóa");
-//        alertDialogBuilder.setIcon(R.drawable.question);
+
         builder.setMessage(String.format("Bạn thực sự muốn xóa thuốc %s ?", medicine.tenThuoc));
         builder.setCancelable(true);
 
@@ -136,10 +143,10 @@ public class MedicineFormActivity extends AppCompatActivity {
                 super.onBackPressed();
                 break;
             case R.id.menuDelete:
-                Thuoc medicine = viewModel.getMedicineById(oldMedicineId);
-
-                if (viewModel.canDeleteMedicine(medicine)) {
-                    showDialogDeleteMedicine(medicine);
+                // Kiểm tra thuốc đã được bán chưa
+                // Nếu chưa thì có thể xóa
+                if (viewModel.canDeleteMedicine(oldMedicine)) {
+                    showDialogDeleteMedicine(oldMedicine);
                 } else {
                     Toast.makeText(this, "Thuốc đã từng được bán nên không thể xóa!", Toast.LENGTH_SHORT).show();
                 }
@@ -150,7 +157,8 @@ public class MedicineFormActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (isEdit) getMenuInflater().inflate(R.menu.menu_form, menu);
+        // Nếu là Form Chỉnh sửa thì mới hiện menu Xóa thuốc
+        if (isEdit()) getMenuInflater().inflate(R.menu.menu_form, menu);
         return super.onCreateOptionsMenu(menu);
     }
 }

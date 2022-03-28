@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.viewmodel;
+package com.team28.qlnhathuoc.ui.chart.chart_pharmacy;
 
 import android.app.Application;
 

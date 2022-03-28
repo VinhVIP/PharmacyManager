@@ -13,6 +13,7 @@ public class Constants {
     public static final String DONGIA = "DONGIA";
 
     public static final String PHARMACY = "PHARMACY";
+    public static final String MEDICINE = "MEDICINE";
     public static final String BILL_DETAIL = "BILL_DETAIL";
 
     public static final int ACTION_ADD = 0;

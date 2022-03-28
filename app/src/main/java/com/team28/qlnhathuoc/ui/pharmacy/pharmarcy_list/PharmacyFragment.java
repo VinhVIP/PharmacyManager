@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.fragment;
+package com.team28.qlnhathuoc.ui.pharmacy.pharmarcy_list;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,18 +8,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.activity.PharmacyFormActivity;
 import com.team28.qlnhathuoc.adapter.PharmacyAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentPharmacyBinding;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
+import com.team28.qlnhathuoc.ui.pharmacy.pharmacy_form.PharmacyFormActivity;
 import com.team28.qlnhathuoc.utils.Constants;
-import com.team28.qlnhathuoc.utils.Helpers;
-import com.team28.qlnhathuoc.viewmodel.PharmacyViewModel;
 
 public class PharmacyFragment extends Fragment {
 
@@ -42,13 +39,17 @@ public class PharmacyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Set RecyclerView scroll theo chiều dọc
         binding.recyclerPharmacy.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         PharmacyAdapter adapter = new PharmacyAdapter(this);
         binding.recyclerPharmacy.setAdapter(adapter);
 
+        // Quan sát sự thay đổi dữ liệu danh sách nhà thuốc
+        // Cập nhật lên RecyclerView
         viewModel.pharmacyList.observe(getActivity(), nhaThuocs -> adapter.setAdapter(nhaThuocs));
 
+        // Di chuyển đếm form thêm/sửa/xóa thuốc
         binding.fab.setOnClickListener(v -> {
             Intent intent = new Intent(this.getActivity(), PharmacyFormActivity.class);
             startActivity(intent);
@@ -58,33 +59,9 @@ public class PharmacyFragment extends Fragment {
     public void goToEditPharmacy(NhaThuoc pharmacy) {
         Intent intent = new Intent(this.getActivity(), PharmacyFormActivity.class);
 
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.MANT, pharmacy.maNT);
-        bundle.putString(Constants.TENNT, pharmacy.tenNT);
-        bundle.putString(Constants.DIACHI, pharmacy.diaChi);
+        intent.putExtra(Constants.PHARMACY, pharmacy);
 
-        intent.putExtra(Constants.REQUEST_ACTION, bundle);
         startActivity(intent);
     }
 
-    public void showDialogDeletePharmacy(NhaThuoc pharmacy) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-        builder.setTitle("Xác nhận xóa");
-//        alertDialogBuilder.setIcon(R.drawable.question);
-        builder.setMessage(String.format("Bạn thực sự muốn xóa nhà thuốc %s ?", pharmacy.tenNT));
-        builder.setCancelable(true);
-
-        builder.setPositiveButton("Đồng ý", (arg0, arg1) -> {
-            if (viewModel.canDeletePharmacy(pharmacy)) {
-                viewModel.deletePharmacy(pharmacy);
-            } else {
-                Helpers.showToast(this.getContext(), "Nhà thuốc đã có dữ liệu nên không thể xóa!");
-            }
-        });
-        builder.setNeutralButton("Hủy", (dialog, which) -> {
-        });
-
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
 }

@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.fragment;
+package com.team28.qlnhathuoc.ui.bill.bill_create;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,12 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.activity.BillCreateActivity;
 import com.team28.qlnhathuoc.adapter.MedicineBillAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentBillChooseMedicineBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Helpers;
-import com.team28.qlnhathuoc.viewmodel.BillCreateViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

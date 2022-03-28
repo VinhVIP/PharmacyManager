@@ -5,10 +5,11 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class HoaDon {
+public class HoaDon implements Serializable {
     @PrimaryKey
     @NonNull
     public String soHD;

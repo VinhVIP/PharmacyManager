@@ -3,8 +3,10 @@ package com.team28.qlnhathuoc.room.entity;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
+import java.io.Serializable;
+
 @Entity(primaryKeys = {"soHD", "maThuoc"})
-public class CTBanLe {
+public class CTBanLe implements Serializable {
     @NonNull
     public String soHD;
     @NonNull

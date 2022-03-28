@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.viewmodel;
+package com.team28.qlnhathuoc.ui.bill.bill_create;
 
 import android.app.Application;
 

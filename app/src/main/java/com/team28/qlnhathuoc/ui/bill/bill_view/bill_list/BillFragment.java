@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.fragment;
+package com.team28.qlnhathuoc.ui.bill.bill_view.bill_list;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,21 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.team28.qlnhathuoc.activity.BillCreateActivity;
-import com.team28.qlnhathuoc.activity.BillDetailActivity;
 import com.team28.qlnhathuoc.adapter.BillAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentBillBinding;
-import com.team28.qlnhathuoc.model.BillObj;
-import com.team28.qlnhathuoc.model.MedicineObj;
-import com.team28.qlnhathuoc.model.PharmacyObj;
 import com.team28.qlnhathuoc.room.entity.CTBanLe;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.room.entity.relations.HoaDonWithThuoc;
+import com.team28.qlnhathuoc.ui.bill.bill_create.BillCreateActivity;
+import com.team28.qlnhathuoc.ui.bill.bill_view.bill_detail.BillDetailActivity;
 import com.team28.qlnhathuoc.utils.Constants;
-import com.team28.qlnhathuoc.viewmodel.BillViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BillFragment extends Fragment {
 
@@ -40,7 +33,7 @@ public class BillFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentBillBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(BillViewModel.class);
@@ -56,41 +49,39 @@ public class BillFragment extends Fragment {
         binding.recyclerBill.setAdapter(adapter);
 
         viewModel.billsList.observe(getActivity(), billsList -> {
+            // Lấy từng hóa đơn ra, duyệt danh sách thuốc (số lượng, đơn giá) để tính tổng tiền của hóa đơn
             for (HoaDonWithThuoc bill : billsList) {
                 int total = 0;
                 for (Thuoc medicine : bill.thuocList) {
                     CTBanLe ctBanLe = viewModel.getCTBanLe(medicine.maThuoc, bill.hoaDon.soHD);
+
                     if (ctBanLe != null) {
-                        total += medicine.donGia * ctBanLe.soLuong;
+                        // Lưu lại số lượng thuốc vào đối tượng medicine
+                        medicine.soLuong = ctBanLe.soLuong;
+
+                        total += medicine.donGia * medicine.soLuong;
                     }
                 }
 
                 bill.totalMoney = total;
             }
+
+            // Cập nhật dữ liệu cho RecyclerView
             adapter.setAdapter(billsList);
         });
 
+        // Mở form lập hóa đơn
         binding.fab.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), BillCreateActivity.class));
         });
     }
 
+    /*
+     * Đi đến màn hình xem chi tiết hóa đơn
+     */
     public void goToBillDetail(HoaDonWithThuoc bill) {
-        PharmacyObj pharmacyObj = new PharmacyObj(bill.pharmacy.maNT, bill.pharmacy.tenNT, bill.pharmacy.diaChi);
-
-        List<MedicineObj> medicineObjList = new ArrayList<>();
-        for (Thuoc medicine : bill.thuocList) {
-            CTBanLe ctBanLe = viewModel.getCTBanLe(medicine.maThuoc, bill.hoaDon.soHD);
-
-            MedicineObj obj = new MedicineObj(medicine);
-            obj.soLuong = ctBanLe.soLuong;
-            medicineObjList.add(obj);
-        }
-
-        BillObj billObj = new BillObj(bill.hoaDon.soHD, bill.hoaDon.ngayHD, pharmacyObj, medicineObjList, bill.totalMoney);
-
         Intent intent = new Intent(getActivity(), BillDetailActivity.class);
-        intent.putExtra(Constants.BILL_DETAIL, billObj);
+        intent.putExtra(Constants.BILL_DETAIL, bill);
         startActivity(intent);
     }
 }

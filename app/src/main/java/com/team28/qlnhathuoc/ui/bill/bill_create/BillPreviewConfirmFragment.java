@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.fragment;
+package com.team28.qlnhathuoc.ui.bill.bill_create;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,7 +18,6 @@ import com.team28.qlnhathuoc.adapter.SpinnerPharmacyAdapter;
 import com.team28.qlnhathuoc.databinding.FragmentBillPreviewConfirmBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Helpers;
-import com.team28.qlnhathuoc.viewmodel.BillCreateViewModel;
 
 import java.util.stream.Collectors;
 

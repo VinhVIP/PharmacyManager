@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team28.qlnhathuoc.databinding.ItemBillDetailBinding;
-import com.team28.qlnhathuoc.fragment.BillPreviewConfirmFragment;
+import com.team28.qlnhathuoc.ui.bill.bill_create.BillPreviewConfirmFragment;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Helpers;
 

@@ -8,10 +8,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.team28.qlnhathuoc.R;
 import com.team28.qlnhathuoc.adapter.ViewPagerAdapter;
 import com.team28.qlnhathuoc.databinding.ActivityMainBinding;
-import com.team28.qlnhathuoc.fragment.BillFragment;
-import com.team28.qlnhathuoc.fragment.MedicineFragment;
-import com.team28.qlnhathuoc.fragment.PharmacyFragment;
-import com.team28.qlnhathuoc.fragment.StatisticFragment;
+import com.team28.qlnhathuoc.ui.bill.bill_view.bill_list.BillFragment;
+import com.team28.qlnhathuoc.ui.medicine.medicine_list.MedicineFragment;
+import com.team28.qlnhathuoc.ui.pharmacy.pharmarcy_list.PharmacyFragment;
+import com.team28.qlnhathuoc.ui.chart.StatisticFragment;
 
 public class MainActivity extends AppCompatActivity {
 

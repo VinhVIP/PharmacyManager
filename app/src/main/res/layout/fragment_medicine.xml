@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragment.MedicineFragment">
+    tools:context=".ui.medicine.medicine_list.MedicineFragment">
 
     <RelativeLayout
         android:id="@+id/searchLayout"

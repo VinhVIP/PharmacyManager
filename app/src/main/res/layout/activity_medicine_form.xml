@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingHorizontal="16dp"
-    tools:context=".activity.PharmacyFormActivity">
+    tools:context=".ui.pharmacy.pharmacy_form.PharmacyFormActivity">
 
     <TextView
         style="@style/TextViewTitle"

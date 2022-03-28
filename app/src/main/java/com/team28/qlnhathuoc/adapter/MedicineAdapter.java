@@ -1,5 +1,6 @@
 package com.team28.qlnhathuoc.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -7,8 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team28.qlnhathuoc.databinding.ItemMedicineBinding;
-import com.team28.qlnhathuoc.fragment.MedicineFragment;
-import com.team28.qlnhathuoc.room.entity.relations.ThuocWithHoaDon;
+import com.team28.qlnhathuoc.room.entity.Thuoc;
+import com.team28.qlnhathuoc.ui.medicine.medicine_list.MedicineFragment;
 import com.team28.qlnhathuoc.utils.Helpers;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHolder> {
 
-    private List<ThuocWithHoaDon> medicineList;
+    private List<Thuoc> medicineList;
     private MedicineFragment fragment;
 
     public MedicineAdapter(MedicineFragment fragment) {
@@ -24,11 +25,12 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
         medicineList = new ArrayList<>();
     }
 
-    public MedicineAdapter(List<ThuocWithHoaDon> medicineList) {
+    public MedicineAdapter(List<Thuoc> medicineList) {
         this.medicineList = medicineList;
     }
 
-    public void setAdapter(List<ThuocWithHoaDon> pharmacyList) {
+    @SuppressLint("NotifyDataSetChanged")
+    public void setAdapter(List<Thuoc> pharmacyList) {
         this.medicineList = pharmacyList;
         notifyDataSetChanged();
     }
@@ -58,23 +60,21 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
             this.itemBinding = itemBinding;
         }
 
-        public void bindData(ThuocWithHoaDon medicine) {
-            itemBinding.tvMaThuoc.setText(medicine.thuoc.maThuoc);
-            itemBinding.tvTenThuoc.setText(medicine.thuoc.tenThuoc);
-            itemBinding.tvDonGia.setText(Helpers.formatCurrency(medicine.thuoc.donGia) + " đ");
-            itemBinding.tvDonViTinh.setText(medicine.thuoc.donViTinh);
+        public void bindData(Thuoc medicine) {
+            itemBinding.tvMaThuoc.setText(medicine.maThuoc);
+            itemBinding.tvTenThuoc.setText(medicine.tenThuoc);
+            itemBinding.tvDonGia.setText(Helpers.formatCurrency(medicine.donGia) + " đ");
+            itemBinding.tvDonViTinh.setText(medicine.donViTinh);
 
-//            float totalMoney = medicine.total * medicine.thuoc.donGia;
-//            itemBinding.tvTotal.setText(medicine.total + " " + medicine.thuoc.donViTinh + " -> " + Helpers.formatCurrency(totalMoney) + " đ");
 
             itemBinding.getRoot().setOnClickListener(v -> {
-                fragment.goToEditMedicine(medicine.thuoc);
+                fragment.goToEditMedicine(medicine);
             });
 
-            itemBinding.getRoot().setOnLongClickListener(v -> {
-                fragment.showDialogDeleteMedicine(medicine.thuoc);
-                return false;
-            });
+//            itemBinding.getRoot().setOnLongClickListener(v -> {
+//                fragment.showDialogDeleteMedicine(medicine);
+//                return false;
+//            });
         }
     }
 }

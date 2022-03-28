@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.team28.qlnhathuoc.databinding.ItemSpinnerPharmacyBinding;
-import com.team28.qlnhathuoc.fragment.BillPreviewConfirmFragment;
+import com.team28.qlnhathuoc.ui.bill.bill_create.BillPreviewConfirmFragment;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
 
 import java.util.List;

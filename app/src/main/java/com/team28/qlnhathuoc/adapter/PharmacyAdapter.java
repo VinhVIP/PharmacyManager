@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team28.qlnhathuoc.databinding.ItemPharmacyBinding;
-import com.team28.qlnhathuoc.fragment.PharmacyFragment;
+import com.team28.qlnhathuoc.ui.pharmacy.pharmarcy_list.PharmacyFragment;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
 
 import java.util.ArrayList;
@@ -66,10 +66,10 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
                 fragment.goToEditPharmacy(pharmacy);
             });
 
-            itemBinding.getRoot().setOnLongClickListener(v -> {
-                fragment.showDialogDeletePharmacy(pharmacy);
-                return false;
-            });
+//            itemBinding.getRoot().setOnLongClickListener(v -> {
+//                fragment.showDialogDeletePharmacy(pharmacy);
+//                return false;
+//            });
         }
     }
 }

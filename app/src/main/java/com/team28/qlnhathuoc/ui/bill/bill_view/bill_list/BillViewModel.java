@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.viewmodel;
+package com.team28.qlnhathuoc.ui.bill.bill_view.bill_list;
 
 import android.app.Application;
 
@@ -24,7 +24,6 @@ public class BillViewModel extends AndroidViewModel {
     private PharmacyDao pharmacyDao;
 
     public LiveData<List<HoaDonWithThuoc>> billsList;
-
 
     public BillViewModel(@NonNull Application application) {
         super(application);
@@ -55,4 +54,5 @@ public class BillViewModel extends AndroidViewModel {
             return null;
         }
     }
+
 }

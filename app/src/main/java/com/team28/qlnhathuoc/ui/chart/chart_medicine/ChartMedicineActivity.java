@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.activity;
+package com.team28.qlnhathuoc.ui.chart.chart_medicine;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,7 +24,6 @@ import com.team28.qlnhathuoc.room.entity.CTBanLe;
 import com.team28.qlnhathuoc.room.entity.HoaDon;
 import com.team28.qlnhathuoc.room.entity.relations.ThuocWithHoaDon;
 import com.team28.qlnhathuoc.utils.Helpers;
-import com.team28.qlnhathuoc.viewmodel.MedicineViewModel;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,7 +33,7 @@ public class ChartMedicineActivity extends AppCompatActivity {
 
     private ActivityChartMedicineBinding binding;
 
-    private MedicineViewModel viewModel;
+    private ChartMedicineViewModel viewModel;
 
     private BarChart barChart;
 
@@ -52,7 +51,7 @@ public class ChartMedicineActivity extends AppCompatActivity {
 
         barChart = binding.barChart;
 
-        viewModel = new ViewModelProvider(this).get(MedicineViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ChartMedicineViewModel.class);
 
         viewModel.medicineBillList.observe(this, medicineList -> {
             int year = Calendar.getInstance().get(Calendar.YEAR);

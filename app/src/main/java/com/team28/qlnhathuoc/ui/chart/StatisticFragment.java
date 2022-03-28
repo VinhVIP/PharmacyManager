@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.fragment;
+package com.team28.qlnhathuoc.ui.chart;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.team28.qlnhathuoc.activity.ChartMedicineActivity;
-import com.team28.qlnhathuoc.activity.ChartPharmacyActivity;
 import com.team28.qlnhathuoc.databinding.FragmentStatisticBinding;
+import com.team28.qlnhathuoc.ui.chart.chart_medicine.ChartMedicineActivity;
+import com.team28.qlnhathuoc.ui.chart.chart_pharmacy.ChartPharmacyActivity;
 
 public class StatisticFragment extends Fragment {
 

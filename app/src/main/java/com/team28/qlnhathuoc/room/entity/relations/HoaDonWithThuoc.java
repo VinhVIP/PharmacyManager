@@ -10,9 +10,10 @@ import com.team28.qlnhathuoc.room.entity.HoaDon;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class HoaDonWithThuoc {
+public class HoaDonWithThuoc implements Serializable {
     @Embedded
     public HoaDon hoaDon;
     @Relation(

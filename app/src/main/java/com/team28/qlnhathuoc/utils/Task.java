@@ -4,9 +4,11 @@ import android.os.AsyncTask;
 
 import com.team28.qlnhathuoc.room.dao.BillDao;
 import com.team28.qlnhathuoc.room.dao.CTBanLeDao;
+import com.team28.qlnhathuoc.room.dao.MedicineDao;
 import com.team28.qlnhathuoc.room.dao.PharmacyDao;
 import com.team28.qlnhathuoc.room.entity.CTBanLe;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
+import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.room.entity.relations.HoaDonWithThuoc;
 
 import java.util.List;
@@ -87,6 +89,19 @@ public class Task {
         @Override
         protected List<NhaThuoc> doInBackground(Void... voids) {
             return dao.getPharmacyOrigin();
+        }
+    }
+
+    public static class GetMedicineByIdTask extends AsyncTask<String, Void, Thuoc> {
+        private final MedicineDao dao;
+
+        public GetMedicineByIdTask(MedicineDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Thuoc doInBackground(String... strings) {
+            return dao.getMedicineById(strings[0]);
         }
     }
 }

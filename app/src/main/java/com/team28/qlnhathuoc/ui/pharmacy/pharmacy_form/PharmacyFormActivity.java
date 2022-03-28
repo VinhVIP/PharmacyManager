@@ -1,5 +1,6 @@
-package com.team28.qlnhathuoc.activity;
+package com.team28.qlnhathuoc.ui.pharmacy.pharmacy_form;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,15 +17,13 @@ import com.team28.qlnhathuoc.databinding.ActivityPharmacyFormBinding;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
 import com.team28.qlnhathuoc.utils.Constants;
 import com.team28.qlnhathuoc.utils.Helpers;
-import com.team28.qlnhathuoc.viewmodel.PharmacyViewModel;
 
 public class PharmacyFormActivity extends AppCompatActivity {
 
     private ActivityPharmacyFormBinding binding;
-    private PharmacyViewModel viewModel;
+    private PharmacyFormViewModel viewModel;
 
-    private boolean isEdit;
-    private String oldPharmacyId;
+    private NhaThuoc oldPharmacy = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +33,17 @@ public class PharmacyFormActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        viewModel = new ViewModelProvider(this).get(PharmacyViewModel.class);
+        viewModel = new ViewModelProvider(this).get(PharmacyFormViewModel.class);
 
         binding.btnSubmit.setOnClickListener(v -> {
             NhaThuoc pharmacy = getCurrentPharmacy();
 
             if (pharmacy != null) {
-                if (isEdit) {
+                if (isEdit()) {
+                    // Kiểm tra xem có nhà thuốc nào bị trùng tên hay không
                     NhaThuoc find = viewModel.getPharmacyByName(pharmacy.tenNT);
 
-                    if (find != null && !find.maNT.equalsIgnoreCase(oldPharmacyId)) {
+                    if (find != null && !find.maNT.equalsIgnoreCase(oldPharmacy.maNT)) {
                         Helpers.showToast(this, "Tên nhà thuốc đã tồn tại!");
                     } else {
                         viewModel.updatePharmacy(pharmacy);
@@ -68,22 +68,30 @@ public class PharmacyFormActivity extends AppCompatActivity {
 
     private void getIntentData() {
         Intent intentData = getIntent();
-        Bundle data = intentData.getBundleExtra(Constants.REQUEST_ACTION);
-        if (data != null) {
-            isEdit = true;
 
-            oldPharmacyId = data.getString(Constants.MANT);
+        if (intentData.hasExtra(Constants.PHARMACY)) {
+            oldPharmacy = (NhaThuoc) intentData.getSerializableExtra(Constants.PHARMACY);
 
-            binding.edMaNT.setText(data.getString(Constants.MANT));
-            binding.edTenNT.setText(data.getString(Constants.TENNT));
-            binding.edDiaChi.setText(data.getString(Constants.DIACHI));
+            binding.edMaNT.setText(oldPharmacy.maNT);
+            binding.edTenNT.setText(oldPharmacy.tenNT);
+            binding.edDiaChi.setText(oldPharmacy.diaChi);
 
             binding.edMaNT.setEnabled(false);
             binding.btnSubmit.setText("Chỉnh sửa");
         }
-
     }
 
+    /*
+     * Kiểm tra Form hiện tại là Form thêm hay là Form chỉnh sửa
+     */
+    private boolean isEdit() {
+        return oldPharmacy != null;
+    }
+
+    /*
+     * Lấy đối tượng nhà thuốc hiện tại dựa trên các dữ liệu đã nhập ở EditText
+     * Nếu lỗi -> hiển thị Toast thông báo
+     */
     private NhaThuoc getCurrentPharmacy() {
         if (binding.edMaNT.getText().toString().isEmpty()) {
             Helpers.showToast(this, "Mã nhà thuốc không được bỏ trống!");
@@ -103,6 +111,9 @@ public class PharmacyFormActivity extends AppCompatActivity {
                 binding.edDiaChi.getText().toString().trim());
     }
 
+    /*
+     * Hiển thị Dialog xác nhận xóa
+     */
     private void showDialogConfirmDelete(NhaThuoc pharmacy) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Xác nhận xóa");
@@ -112,6 +123,8 @@ public class PharmacyFormActivity extends AppCompatActivity {
         builder.setPositiveButton("Đồng ý", (arg0, arg1) -> {
             viewModel.deletePharmacy(pharmacy);
             Toast.makeText(this, "Xóa nhà thuốc thành công!", Toast.LENGTH_SHORT).show();
+
+            // Xóa xong thì đóng activity form, quay về màn hình dánh sách nhà thuốc
             finish();
         });
         builder.setNeutralButton("Hủy", (dialog, which) -> {
@@ -121,6 +134,7 @@ public class PharmacyFormActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -128,8 +142,10 @@ public class PharmacyFormActivity extends AppCompatActivity {
                 super.onBackPressed();
                 break;
             case R.id.menuDelete:
-                NhaThuoc pharmacy = viewModel.getPharmacyById(oldPharmacyId);
+                NhaThuoc pharmacy = viewModel.getPharmacyById(oldPharmacy.maNT);
 
+                // Kiểm tra nhà thuốc đã có dữ liệu bán thuốc hay chưa
+                // Nếu chưa có thì xóa được
                 if (viewModel.canDeletePharmacy(pharmacy)) {
                     showDialogConfirmDelete(pharmacy);
                 } else {
@@ -142,7 +158,9 @@ public class PharmacyFormActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (isEdit) getMenuInflater().inflate(R.menu.menu_form, menu);
+        // Nếu Form là Form chỉnh sửa thì mới hiển thị menu "Xóa nhà thuốc"
+        if (isEdit()) getMenuInflater().inflate(R.menu.menu_form, menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 }

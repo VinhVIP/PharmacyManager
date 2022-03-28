@@ -1,4 +1,4 @@
-package com.team28.qlnhathuoc.activity;
+package com.team28.qlnhathuoc.ui.chart.chart_pharmacy;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,7 +25,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.team28.qlnhathuoc.databinding.ActivityChartPharmacyBinding;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
 import com.team28.qlnhathuoc.utils.Helpers;
-import com.team28.qlnhathuoc.viewmodel.ChartPharmacyViewModel;
 
 import java.util.ArrayList;
 import java.util.Calendar;

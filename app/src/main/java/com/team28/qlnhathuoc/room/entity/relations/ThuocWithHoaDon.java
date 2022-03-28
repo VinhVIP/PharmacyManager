@@ -9,9 +9,10 @@ import com.team28.qlnhathuoc.room.entity.CTBanLe;
 import com.team28.qlnhathuoc.room.entity.HoaDon;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ThuocWithHoaDon {
+public class ThuocWithHoaDon  implements Serializable {
     @Embedded
     public Thuoc thuoc;
     @Relation(

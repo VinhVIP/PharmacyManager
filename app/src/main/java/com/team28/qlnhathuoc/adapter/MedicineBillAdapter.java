@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team28.qlnhathuoc.databinding.ItemMedicineBillBinding;
-import com.team28.qlnhathuoc.fragment.BillChooseMedicineFragment;
+import com.team28.qlnhathuoc.ui.bill.bill_create.BillChooseMedicineFragment;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Helpers;
 
