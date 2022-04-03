@@ -1,6 +1,7 @@
 package com.team28.qlnhathuoc.room.entity;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
@@ -18,9 +19,13 @@ public class NhaThuoc implements Serializable {
 
     public String diaChi;
 
-    public NhaThuoc(@NonNull String maNT, String tenNT, String diaChi) {
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    public byte[] icon;
+
+    public NhaThuoc(@NonNull String maNT, String tenNT, String diaChi, byte[] icon) {
         this.maNT = maNT;
         this.tenNT = tenNT;
         this.diaChi = diaChi;
+        this.icon = icon;
     }
 }

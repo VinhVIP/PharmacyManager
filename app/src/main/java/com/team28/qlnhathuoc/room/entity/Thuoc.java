@@ -1,6 +1,7 @@
 package com.team28.qlnhathuoc.room.entity;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -19,11 +20,15 @@ public class Thuoc implements Serializable {
 
     public float donGia;
 
-    public Thuoc(@NonNull String maThuoc, String tenThuoc, String donViTinh, float donGia) {
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    public byte[] icon;
+
+    public Thuoc(@NonNull String maThuoc, String tenThuoc, String donViTinh, float donGia, byte[] icon) {
         this.maThuoc = maThuoc;
         this.tenThuoc = tenThuoc;
         this.donViTinh = donViTinh;
         this.donGia = donGia;
+        this.icon = icon;
     }
 
     // Field này sẽ không được tạo

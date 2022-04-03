@@ -52,6 +52,83 @@
         android:hint="@string/nhap_dia_chi"
         android:maxLines="5" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TextViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPickIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_choose_image"
+            android:drawableStart="@drawable/ic_choose_image"
+            android:drawablePadding="4dp"
+            android:paddingHorizontal="6dp"
+            android:text="Chọn ảnh từ thư viện"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edPathIcon"
+            style="@style/InputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/chon_icon"
+            android:maxLines="5"
+            android:paddingEnd="40dp" />
+
+        <ImageView
+            android:id="@+id/btnLoadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_download_image" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/layoutPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
+
+        <ImageView
+            android:id="@+id/imgIconPreview"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/bg_choose_image" />
+
+        <ImageView
+            android:id="@+id/btnClearImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/imgIconPreview"
+            android:src="@drawable/ic_clear" />
+    </RelativeLayout>
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmit"
         style="@style/ActiveButton"

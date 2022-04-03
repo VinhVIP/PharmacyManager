@@ -29,9 +29,11 @@
     <string name="ma_nt">Mã nhà thuốc:</string>
     <string name="ten_nt">Tên nhà thuốc:</string>
     <string name="dia_chi">Địa chỉ:</string>
+    <string name="icon">Icon:</string>
     <string name="nhap_ma_nt">Nhập mã nhà thuốc</string>
     <string name="nhap_ten_nt">Nhập tên nhà thuốc:</string>
     <string name="nhap_dia_chi">Nhập địa chỉ</string>
+    <string name="chon_icon">Nhập link ảnh từ internet</string>
     <string name="nhap_tu_khoa">Nhập từ khóa cần tìm...</string>
     <string name="xem_ds">Xem danh sách</string>
     <string name="thong_ke_doanh_thu">Thống kê doanh thu</string>

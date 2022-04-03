@@ -61,6 +61,9 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
             itemBinding.tvDonGia.setText(Helpers.formatCurrency(medicine.donGia) + " đ");
             itemBinding.tvDonViTinh.setText(medicine.donViTinh);
 
+            if(medicine.icon != null){
+                itemBinding.imgIcon.setImageBitmap(Helpers.bytesToBitmap(medicine.icon));
+            }
 
             itemBinding.getRoot().setOnClickListener(v -> {
                 fragment.goToEditMedicine(medicine);

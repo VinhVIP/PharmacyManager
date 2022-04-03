@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.team28.qlnhathuoc.R;
 import com.team28.qlnhathuoc.databinding.ItemPharmacyBinding;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
+import com.team28.qlnhathuoc.utils.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +60,12 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
             itemBinding.tvMaNT.setText(pharmacy.maNT);
             itemBinding.tvTenNT.setText(pharmacy.tenNT);
             itemBinding.tvDiaChi.setText(pharmacy.diaChi);
+
+            if (pharmacy.icon == null) {
+                itemBinding.imgIcon.setImageResource(R.drawable.pharmacy);
+            } else {
+                itemBinding.imgIcon.setImageBitmap(Helpers.bytesToBitmap(pharmacy.icon));
+            }
 
             itemBinding.getRoot().setOnClickListener(v -> {
                 fragment.goToEditPharmacy(pharmacy);

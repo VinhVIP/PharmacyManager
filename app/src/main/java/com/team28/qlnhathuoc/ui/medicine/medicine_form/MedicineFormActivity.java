@@ -1,6 +1,12 @@
 package com.team28.qlnhathuoc.ui.medicine.medicine_form;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,11 +18,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 import com.team28.qlnhathuoc.R;
 import com.team28.qlnhathuoc.databinding.ActivityMedicineFormBinding;
 import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.utils.Constants;
+import com.team28.qlnhathuoc.utils.FileUtil;
 import com.team28.qlnhathuoc.utils.Helpers;
+
+import java.io.File;
 
 public class MedicineFormActivity extends AppCompatActivity {
 
@@ -26,6 +37,8 @@ public class MedicineFormActivity extends AppCompatActivity {
     // Thuốc muốn cập nhật / xóa
     // Nếu Form được mở là Form thêm thì oldMedicine = null
     private Thuoc oldMedicine = null;
+    private Bitmap iconBitmap = null;
+
 
     private String[] dvt = {"Hộp", "Vỉ", "Viên", "Lọ", "Chai", "Kit"};
 
@@ -58,9 +71,122 @@ public class MedicineFormActivity extends AppCompatActivity {
             }
         });
 
+        onLoadImageIcon();
+
         getIntentData();
         setupDVT();
     }
+
+    private void onLoadImageIcon() {
+        // Chọn icon từ thư viện
+        binding.btnChooseIcon.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");      // Lọc chỉ lấy hình ảnh
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+                startActivityForResult(Intent.createChooser(intent, "Chọn ảnh để làm icon"), Constants.REQUEST_PICK_FILE);
+            } catch (ActivityNotFoundException ex) {
+                Toast.makeText(this, "Vui lòng cài đặt File Manager", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        // Tải ảnh từ internet để hiển thị
+        binding.btnLoadImage.setOnClickListener(v -> {
+            // Lấy link ảnh được điền từ EditText
+            String link = binding.edPathIcon.getText().toString().trim();
+
+            // Cần phải kiểm tra xem link ảnh có đúng hay không
+            Picasso.with(this).load(link).resize(100, 100).into(new Target() {
+                @Override
+                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                    // Load ảnh thành công
+                    binding.imgIconPreview.setImageBitmap(bitmap);
+                    iconBitmap = bitmap;
+                }
+
+                @Override
+                public void onBitmapFailed(Drawable errorDrawable) {
+                    // Load ảnh thất bại
+                    Toast.makeText(MedicineFormActivity.this, "Đường dẫn ảnh không hợp lệ!", Toast.LENGTH_SHORT).show();
+                    iconBitmap = null;
+                }
+
+                @Override
+                public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                }
+            });
+        });
+
+        // Clear ảnh
+        binding.btnClearImage.setOnClickListener(v -> {
+            iconBitmap = null;
+            binding.imgIconPreview.setImageResource(R.drawable.medicine);
+        });
+
+
+        // Chụp ảnh để làm icon
+        binding.btnTakePhoto.setOnClickListener(v -> {
+            // Kiểm tra quyền CAMERA đã được cấp chưa
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                // Nếu chưa thì yêu cầu cấp quyền
+                requestPermissions(new String[]{Manifest.permission.CAMERA}, Constants.REQUEST_PERMISSION_CAMERA);
+            } else {
+                // Nếu đã cấp quyền thì mở app camera
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, Constants.REQUEST_TAKE_PHOTO);
+            }
+        });
+    }
+
+    /*
+     * Xử lý kết quả cấp quyền (permission) tại đây
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == Constants.REQUEST_PERMISSION_CAMERA) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, Constants.REQUEST_TAKE_PHOTO);
+            } else {
+                Toast.makeText(this, "Chưa cấp quyền sử dụng camera", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    /*
+     * Xử lý kết quả chọn ảnh từ thư viện, chụp ảnh từ camera tại đây
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constants.REQUEST_PICK_FILE) {
+            // Nếu request là chọn ảnh từ thư viện
+
+            if (resultCode == RESULT_OK) {
+                Uri uri = data.getData();
+
+                File file = FileUtil.from(this, uri);
+                Picasso.with(MedicineFormActivity.this).load(file).resize(100, 100).into(binding.imgIconPreview);
+            }
+        } else if (requestCode == Constants.REQUEST_TAKE_PHOTO) {
+            // request là chụp ảnh từ camera
+
+            if (resultCode == RESULT_OK) {
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+
+                // resize ảnh về kích thước 100x100 để tối ưu bộ nhớ
+                iconBitmap = Helpers.getResizedBitmap(photo, 100, 100);
+
+                binding.imgIconPreview.setImageBitmap(iconBitmap);
+            }
+        }
+    }
+
 
     private void getIntentData() {
         Intent intentData = getIntent();
@@ -72,6 +198,10 @@ public class MedicineFormActivity extends AppCompatActivity {
             binding.edTenThuoc.setText(oldMedicine.tenThuoc);
             binding.edDVT.setText(oldMedicine.donViTinh);
             binding.edDonGia.setText(Helpers.floatToString(oldMedicine.donGia));
+
+            if (oldMedicine.icon != null) {
+                binding.imgIconPreview.setImageBitmap(Helpers.bytesToBitmap(oldMedicine.icon));
+            }
 
             binding.edMaThuoc.setEnabled(false);
             binding.btnSubmit.setText("Chỉnh sửa");
@@ -111,7 +241,8 @@ public class MedicineFormActivity extends AppCompatActivity {
         return new Thuoc(binding.edMaThuoc.getText().toString().trim().toUpperCase(),
                 binding.edTenThuoc.getText().toString().trim(),
                 binding.edDVT.getText().toString().trim(),
-                Float.parseFloat(binding.edDonGia.getText().toString()));
+                Float.parseFloat(binding.edDonGia.getText().toString()),
+                Helpers.bitmapToBytes(iconBitmap));
     }
 
     /*
