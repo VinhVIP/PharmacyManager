@@ -8,5 +8,6 @@ public class Constants {
     public static final int REQUEST_PICK_FILE = 111;
     public static final int REQUEST_TAKE_PHOTO = 112;
     public static final int REQUEST_PERMISSION_CAMERA = 50;
+    public static final int REQUEST_PERMISSION_EXTERNAL_STORAGE = 50;
 
 }
