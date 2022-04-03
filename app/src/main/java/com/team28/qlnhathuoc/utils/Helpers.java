@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -13,6 +15,10 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Helpers {
+
+    public static boolean isValidEmail(String email) {
+        return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+    }
 
     public static Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {
         int width = bm.getWidth();

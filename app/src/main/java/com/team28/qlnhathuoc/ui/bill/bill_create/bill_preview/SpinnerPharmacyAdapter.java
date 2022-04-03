@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 
 import com.team28.qlnhathuoc.databinding.ItemSpinnerPharmacyBinding;
 import com.team28.qlnhathuoc.room.entity.NhaThuoc;
-import com.team28.qlnhathuoc.ui.bill.bill_create.bill_preview.BillPreviewConfirmFragment;
+import com.team28.qlnhathuoc.utils.Helpers;
 
 import java.util.List;
 
@@ -44,6 +44,7 @@ public class SpinnerPharmacyAdapter extends BaseAdapter {
         NhaThuoc pharmacy = pharmacyList.get(i);
         binding.tvMaNT.setText(pharmacy.maNT);
         binding.tvTenNT.setText(pharmacy.tenNT);
+        binding.imgIcon.setImageBitmap(Helpers.bytesToBitmap(pharmacy.icon));
         return binding.getRoot();
     }
 }
