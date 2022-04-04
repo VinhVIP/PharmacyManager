@@ -44,7 +44,8 @@ public class SpinnerPharmacyAdapter extends BaseAdapter {
         NhaThuoc pharmacy = pharmacyList.get(i);
         binding.tvMaNT.setText(pharmacy.maNT);
         binding.tvTenNT.setText(pharmacy.tenNT);
-        binding.imgIcon.setImageBitmap(Helpers.bytesToBitmap(pharmacy.icon));
+        if (pharmacy.icon != null)
+            binding.imgIcon.setImageBitmap(Helpers.bytesToBitmap(pharmacy.icon));
         return binding.getRoot();
     }
 }
