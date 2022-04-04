@@ -42,11 +42,12 @@
             android:label="@string/lap_hoa_don" />
         <activity
             android:name=".ui.medicine.medicine_form.MedicineFormActivity"
+            android:label="@string/label_thuoc"
             android:exported="false" />
         <activity
             android:name=".ui.pharmacy.pharmacy_form.PharmacyFormActivity"
             android:exported="false"
-            android:label="Nhà thuốc" />
+            android:label="@string/label_nha_thuoc" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">

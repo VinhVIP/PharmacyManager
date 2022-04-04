@@ -45,5 +45,7 @@
     <string name="nhap_email">Nhập email</string>
     <string name="quay_ve">Quay về</string>
     <string name="gui">Gửi</string>
+    <string name="label_thuoc">Thuốc</string>
+    <string name="label_nha_thuoc">Nhà thuốc</string>
 
 </resources>
