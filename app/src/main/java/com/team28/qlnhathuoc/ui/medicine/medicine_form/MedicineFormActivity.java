@@ -171,7 +171,22 @@ public class MedicineFormActivity extends AppCompatActivity {
                 Uri uri = data.getData();
 
                 File file = FileUtil.from(this, uri);
-                Picasso.with(MedicineFormActivity.this).load(file).resize(100, 100).into(binding.imgIconPreview);
+                Picasso.with(this).load(file).resize(100, 100).into(new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        binding.imgIconPreview.setImageBitmap(bitmap);
+                        iconBitmap = bitmap;
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Drawable errorDrawable) {
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+                });
             }
         } else if (requestCode == Constants.REQUEST_TAKE_PHOTO) {
             // request là chụp ảnh từ camera
