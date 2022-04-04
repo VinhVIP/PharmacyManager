@@ -13,6 +13,6 @@ Ngôn ngữ: Java
 
 ## Một số hình ảnh
 
-![](https://lh3.google.com/u/0/d/1j4W5n58ujYLbhMkYf9nub1Ztxgc6oB1f=w1921-h946-iv1)
-![](https://lh3.google.com/u/0/d/1YAbpqAdHR-pXHLZ3SnPFxfYZP0Oi67C-=w1921-h399-iv1)
-![](https://lh3.google.com/u/0/d/1LyBb_UJWIAu7DJAduPXi46-qJPAW3Y8A=w1921-h399-iv1)
+![](https://drive.google.com/uc?export=view&id=1j4W5n58ujYLbhMkYf9nub1Ztxgc6oB1f)
+![](https://drive.google.com/uc?export=view&id=1YAbpqAdHR-pXHLZ3SnPFxfYZP0Oi67C-)
+![](https://drive.google.com/uc?export=view&id=1LyBb_UJWIAu7DJAduPXi46-qJPAW3Y8A)
