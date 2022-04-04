@@ -3,7 +3,10 @@ package com.team28.qlnhathuoc.ui.bill.bill_view.bill_detail;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.team28.qlnhathuoc.R;
 import com.team28.qlnhathuoc.databinding.ActivityBillDetailBinding;
+import com.team28.qlnhathuoc.room.entity.Thuoc;
 import com.team28.qlnhathuoc.room.entity.relations.HoaDonWithThuoc;
 import com.team28.qlnhathuoc.utils.Constants;
 import com.team28.qlnhathuoc.utils.Helpers;
@@ -92,14 +96,70 @@ public class BillDetailActivity extends AppCompatActivity {
 
         PdfDocument pdfDocument = new PdfDocument();
         Paint paint = new Paint();
+        Bitmap bmp, scaledBitmap;
+
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.bg_pdf);
+        scaledBitmap = Bitmap.createScaledBitmap(bmp, 300, 70, false);
 
         PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth, pageHeight, 1).create();
         PdfDocument.Page page = pdfDocument.startPage(pageInfo);
 
         Canvas canvas = page.getCanvas();
 
-        canvas.drawText("Hóa đơn ndsnvjpsdi vpdnvps", 50, 50, paint);
-        canvas.drawText("Hóa đơn dsssssssssssssssssss vpdnvps", 10, 10, paint);
+        canvas.drawBitmap(scaledBitmap, 0, 0, paint);
+
+        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setTextSize(18f);
+        paint.setColor(Color.rgb(255, 0, 0));
+        paint.setFakeBoldText(true);
+        canvas.drawText("HÓA ĐƠN " + bill.hoaDon.soHD, pageInfo.getPageWidth() / 2, 85, paint);
+        canvas.drawText("Nhà thuốc " + bill.pharmacy.maNT + " - " + bill.pharmacy.tenNT, pageInfo.getPageWidth() / 2, 105, paint);
+
+        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setTextSize(12f);
+        paint.setColor(Color.rgb(255, 0, 0));
+        paint.setFakeBoldText(true);
+        canvas.drawText("Thời gian " + Helpers.getStringDate(bill.hoaDon.ngayHD), pageInfo.getPageWidth() / 2, 125, paint);
+
+        paint.setTextAlign(Paint.Align.LEFT);
+        paint.setTextSize(12f);
+        paint.setColor(Color.rgb(0, 0, 255));
+        paint.setFakeBoldText(true);
+        canvas.drawText("SL", 20, 150, paint);
+
+        paint.setTextAlign(Paint.Align.LEFT);
+        paint.setTextSize(12f);
+        paint.setColor(Color.rgb(0, 0, 255));
+        paint.setFakeBoldText(true);
+        canvas.drawText("Thuốc", 50, 150, paint);
+
+        paint.setTextAlign(Paint.Align.RIGHT);
+        paint.setTextSize(15f);
+        paint.setColor(Color.rgb(0, 0, 255));
+        paint.setFakeBoldText(true);
+        canvas.drawText("Giá", 280, 150, paint);
+
+        int startY = 160;
+        for (Thuoc thuoc : bill.thuocList) {
+            paint.setTextAlign(Paint.Align.LEFT);
+            paint.setTextSize(12f);
+            paint.setColor(Color.rgb(0, 0, 0));
+            paint.setFakeBoldText(true);
+            canvas.drawText(String.valueOf(thuoc.soLuong), 20, startY + 20, paint);
+            canvas.drawText(thuoc.maThuoc + " - " + thuoc.tenThuoc, 50, startY + 20, paint);
+            paint.setTextAlign(Paint.Align.RIGHT);
+            paint.setTextSize(12f);
+            paint.setColor(Color.rgb(0, 0, 0));
+            paint.setFakeBoldText(true);
+            canvas.drawText(String.valueOf(Helpers.formatCurrency(thuoc.donGia) + " đ"), 280, startY + 20, paint);
+            startY += 20;
+        }
+
+        paint.setTextAlign(Paint.Align.RIGHT);
+        paint.setTextSize(15f);
+        paint.setColor(Color.rgb(0, 0, 255));
+        paint.setFakeBoldText(true);
+        canvas.drawText("Tổng cộng: " + Helpers.formatCurrency(bill.totalMoney) + " đ", 280, 580, paint);
 
         pdfDocument.finishPage(page);
 
