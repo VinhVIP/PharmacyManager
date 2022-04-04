@@ -2,6 +2,8 @@ package com.team28.qlnhathuoc.ui.bill.bill_create.bill_preview;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -125,6 +127,8 @@ public class BillPreviewConfirmFragment extends Fragment {
         dialog.setCancelable(false);
         DialogSendBillBinding dialogBinding = DialogSendBillBinding.inflate(getLayoutInflater());
         dialog.setContentView(dialogBinding.getRoot());
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         dialogBinding.btnDialogCancel.setOnClickListener(v -> {
             dialog.dismiss();

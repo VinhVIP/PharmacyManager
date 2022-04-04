@@ -40,5 +40,10 @@
     <string name="theo_nt">Theo nhà thuốc</string>
     <string name="theo_thuoc">Theo loại thuốc</string>
     <string name="default_value_counter">0</string>
+    <string name="bill_created">Đã tạo Hóa Đơn</string>
+    <string name="send_bill">Gửi hóa đơn cho khách hàng?</string>
+    <string name="nhap_email">Nhập email</string>
+    <string name="quay_ve">Quay về</string>
+    <string name="gui">Gửi</string>
 
 </resources>
